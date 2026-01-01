@@ -9,6 +9,18 @@
   @apply my-6;
 }
 
+.markdown pre {
+  @apply my-6 p-4 rounded-lg overflow-x-auto bg-neutral-900 text-neutral-100;
+}
+.markdown pre code {
+  @apply p-0 bg-transparent text-inherit;
+}
+
+/* 코드 하이라이트 */
+.markdown [data-highlighted-line] {
+  @apply block -mx-4 px-4 bg-white/10;
+}
+
 .markdown h2 {
   @apply text-3xl mt-12 mb-4 leading-snug;
 }
