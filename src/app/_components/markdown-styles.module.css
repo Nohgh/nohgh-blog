@@ -12,19 +12,95 @@
 .markdown pre {
   @apply my-6 p-4 rounded-lg overflow-x-auto bg-neutral-900 text-neutral-100;
 }
+
 .markdown pre code {
   @apply p-0 bg-transparent text-inherit;
 }
 
+.markdown :not(pre) > code {
+  @apply px-0.5 py-0.5
+    rounded-md
+    text-[0.95em]
+    font-mono
+    bg-neutral-100
+    text-neutral-800
+    border border-neutral-200
+    dark:bg-neutral-800
+    dark:text-neutral-100
+    dark:border-neutral-700;
+}
+
 /* 코드 하이라이트 */
 .markdown [data-highlighted-line] {
-  @apply block -mx-4 px-4 bg-white/10;
+  @apply block mx-4 px-4 bg-white/10;
+}
+
+.markdown h1 {
+  @apply text-4xl;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl;
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  @apply font-sans font-semibold mt-4 mb-2 leading-snug;
+}
+
+.markdown ul {
+  @apply list-disc pl-6 my-6;
+}
+
+.markdown ol {
+  @apply list-decimal pl-6 my-6;
+}
+
+.markdown li {
+  @apply my-2;
+}
+
+/* 중첩 리스트 */
+.markdown ul ul,
+.markdown ul ol,
+.markdown ol ul,
+.markdown ol ol {
+  @apply mt-2 mb-2;
+}
+
+.markdown table {
+  @apply w-full border-collapse my-8 text-sm;
+}
+
+.markdown thead {
+  @apply bg-neutral-100 dark:bg-neutral-800;
+}
+
+.markdown th {
+  @apply border border-neutral-300 dark:border-neutral-700
+         px-3 py-2 font-semibold text-left;
+}
+
+.markdown td {
+  @apply border border-neutral-300 dark:border-neutral-700
+         px-3 py-2;
+}
+
+.markdown tbody tr:nth-child(even) {
+  @apply bg-neutral-50 dark:bg-neutral-900;
+}
+
+.markdown a {
+  @apply text-blue-600
+    underline underline-offset-4
+    decoration-blue-400
+    hover:text-blue-500
+    dark:text-blue-400
+    dark:decoration-blue-500
+    dark:hover:text-blue-300;
 }
