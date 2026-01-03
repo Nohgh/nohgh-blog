@@ -17,23 +17,18 @@ export function Posts({ posts }: Props) {
       postsByYear.set(year, [post]);
     }
   }
-  console.log(postsByYear);
+
   return (
     <section className="font-gowun mb-32">
       {Array.from(postsByYear.entries()).map(([year, yearPosts]) => (
-        <div key={year} className="mb-16 pb-5 border-b grayscale">
-          <h1 className="mb-8 text-xl md:text-2xl font-bold tracking-tighter leading-tight font-bold">
+        <div key={year} className="mb-16 pb-5 border-b dark:border-neutral-800 ">
+          <h1 className="mb-8 text-xl md:text-2xl tracking-tighter leading-tight font-bold dark:text-neutral-500 text-neutral-600">
             {year}
           </h1>
 
-          <div className="grid grid-cols-1 md:grid-cols-1 md:gap-x-16 lg:gap-x-32 gap-y-11 md:gap-y-16">
-            {yearPosts.map((post) => (
-              <PostPreview
-                key={post.slug}
-                title={post.title}
-                date={post.date}
-                slug={post.slug}
-              />
+          <div className="grid grid-cols-1 md:grid-cols-1 md:gap-x-16 lg:gap-x-32 gap-y-11 md:gap-y-10 xl:gap-y-14">
+            {yearPosts.map(post => (
+              <PostPreview key={post.slug} title={post.title} date={post.date} slug={post.slug} />
             ))}
           </div>
         </div>

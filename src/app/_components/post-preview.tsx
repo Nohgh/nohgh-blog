@@ -10,7 +10,7 @@ type Props = {
 export function PostPreview({ title, date, slug }: Props) {
   return (
     <div className="md:flex md:items-baseline md:justify-between">
-      <h3 className="2xl:text-3xl md:text-2xl text-xl leading-snug">
+      <h3 className="md:text-2xl text-xl leading-snug">
         <Link href={`/posts/${slug}`} className="hover:underline">
           {title}
         </Link>

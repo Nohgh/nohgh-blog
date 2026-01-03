@@ -1,8 +1,5 @@
 .switch {
   all: unset;
-  position: absolute;
-  right: 1.3rem;
-  top: 1.3rem;
   display: inline-block;
   color: currentColor;
   border-radius: 50%;
@@ -15,7 +12,6 @@
 }
 
 [data-mode="system"] .switch::after {
-  position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
@@ -33,7 +29,8 @@
 }
 
 [data-mode="dark"] .switch {
-  box-shadow: calc(var(--size) / 4) calc(var(--size) / -4) calc(var(--size) / 8) inset #fff;
+  box-shadow: calc(var(--size) / 4) calc(var(--size) / -4) calc(var(--size) / 8)
+    inset #fff;
   border: none;
   background: transparent;
   animation: n linear 0.5s;

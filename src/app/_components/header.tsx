@@ -1,13 +1,17 @@
 import Link from "next/link";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const Header = () => {
   return (
-    <h2 className="text-2xl md:text-3xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8 flex items-center">
+    <header className="sticky top-0 py-2 pr-12  h-[40px] w-full flex flex-row justify-end gap-6 text-base 2xl:text-lg">
       <Link href="/" className="hover:underline">
-        Nohgh
+        홈
       </Link>
-      .
-    </h2>
+      <Link href="/about" className="hover:underline">
+        about
+      </Link>
+      <ThemeSwitcher />
+    </header>
   );
 };
 

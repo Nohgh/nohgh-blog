@@ -9,7 +9,7 @@ const DateFormatter = ({ dateString, isYear = false }: Props) => {
   const date = parseISO(dateString);
   return (
     <time dateTime={dateString}>
-      {format(date, isYear ? "yyyy년 MM월 d일" : "MM월 d일")}
+      {format(date, isYear ? "yyyy년 MM월 d일" : "MM. dd")}
     </time>
   );
 };
