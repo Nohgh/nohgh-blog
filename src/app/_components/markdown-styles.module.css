@@ -74,7 +74,7 @@
 }
 
 .markdown table {
-  @apply w-full border-collapse my-10 text-sm bg-white dark:bg-neutral-950;
+  @apply w-full border-collapse my-10 text-base  bg-white dark:bg-neutral-950;
 }
 .markdown thead {
   @apply bg-neutral-100 dark:bg-neutral-900;

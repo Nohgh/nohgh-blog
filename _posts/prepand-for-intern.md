@@ -2,7 +2,7 @@
 title: "인턴을 준비하며"
 excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
 coverImage: "/assets/blog/preview/cover.jpg"
-date: "2020-03-22T05:35:07.322Z"
+date: "2025-01-02"
 author:
   name: Joe Haddad
   picture: "/assets/blog/authors/joe.jpeg"
@@ -36,7 +36,7 @@ export function getPostBySlug(slug: string) {
 export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map(slug => getPostBySlug(slug))
+    .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
@@ -111,19 +111,18 @@ Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris 
 
 [상대적 참조](../users/login)
 
-[Dribbble][Dribbble Link]
-
 ![대체 텍스트(Alternative Text)](https://picsum.photos/1000/400 "링크 설명(Title)")
+
 ![이미지입니다!][Image]
 
-## [Image]: https://picsum.photos/500/300 "이미지입니다!"
+[Image]: https://picsum.photos/500/300 "이미지입니다!"
 
 ---
 
 | 값         |                  의미                  |   기본값 |
 | ---------- | :------------------------------------: | -------: |
-| `static`   |     유형(기준) 없음 / 배치 불가능      | `static` |
+| static     |     유형(기준) 없음 / 배치 불가능      | `static` |
 | `relative` |       요소 자신을 기준으로 배치        |          |
-| `absolute` | 위치 상 부모(조상)요소를 기준으로 배치 |          |
-| `fixed`    |      브라우저 창을 기준으로 배치       |          |
+| absolute   | 위치 상 부모(조상)요소를 기준으로 배치 |          |
+| fixed      |      브라우저 창을 기준으로 배치       |          |
 | `sticky`   |       스크롤 영역 기준으로 배치        |          |
