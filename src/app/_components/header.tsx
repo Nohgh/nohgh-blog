@@ -3,7 +3,7 @@ import { ThemeSwitcher } from "./theme-switcher";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 py-2 pr-12  h-[40px] w-full flex flex-row justify-end gap-6 text-base 2xl:text-lg">
+    <header className="font-gowun sticky top-0 py-2 pr-12  h-[40px] w-full flex flex-row justify-end gap-6 text-base 2xl:text-lg">
       <Link href="/" className="hover:underline">
         홈
       </Link>
