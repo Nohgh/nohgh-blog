@@ -12,6 +12,37 @@ ogImage:
 
 ---
 
+```tsx
+import { Post } from "@/interfaces/post";
+import fs from "fs";
+import matter from "gray-matter";
+import { join } from "path";
+
+const postsDirectory = join(process.cwd(), "_posts");
+
+export function getPostSlugs() {
+  return fs.readdirSync(postsDirectory);
+}
+
+export function getPostBySlug(slug: string) {
+  const realSlug = slug.replace(/\.md$/, "");
+  const fullPath = join(postsDirectory, `${realSlug}.md`);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return { ...data, slug: realSlug, content } as Post;
+}
+
+export function getAllPosts(): Post[] {
+  const slugs = getPostSlugs();
+  const posts = slugs
+    .map(slug => getPostBySlug(slug))
+    // sort posts by date in descending order
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+  return posts;
+}
+```
+
 1. `동해물과 백두산이` 마르고 닳도록
    하느님이 보우하사 우리나라 만세
    무궁화 삼천리 화려 강산

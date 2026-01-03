@@ -1,10 +1,8 @@
-import Footer from "@/app/_components/footer";
+import "./globals.css";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import cn from "classnames";
 import { ThemeSwitcher } from "./_components/theme-switcher";
-import "./globals.css";
-import localFont from "next/font/local";
 import { Gowun } from "./fonts";
 
 export const metadata: Metadata = {
@@ -34,10 +32,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className={cn("dark:bg-slate-900 dark:text-slate-400")}>
+      {/* dark:bg-neutral-900 */}
+      <body className={cn("dark:bg-zinc-900 dark:text-slate-400 bg-[#FFF9F4]")}>
         <ThemeSwitcher />
         <div className="min-h-screen">{children}</div>
-        <Footer />
       </body>
     </html>
   );
