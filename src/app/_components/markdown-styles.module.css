@@ -74,25 +74,39 @@
 }
 
 .markdown table {
-  @apply w-full border-collapse my-8 text-sm;
+  @apply w-full border-collapse my-10 text-sm bg-white dark:bg-neutral-950;
 }
-
 .markdown thead {
-  @apply bg-neutral-100 dark:bg-neutral-800;
+  @apply bg-neutral-100 dark:bg-neutral-900;
 }
 
 .markdown th {
-  @apply border border-neutral-300 dark:border-neutral-700
-         px-3 py-2 font-semibold text-left;
+  @apply border border-neutral-300 dark:border-neutral-800
+         px-4 py-2
+         font-semibold
+         text-neutral-900 dark:text-neutral-100;
 }
-
 .markdown td {
-  @apply border border-neutral-300 dark:border-neutral-700
-         px-3 py-2;
+  @apply border border-neutral-300 dark:border-neutral-800
+         px-4 py-2
+         text-neutral-800 dark:text-neutral-200;
 }
 
 .markdown tbody tr:nth-child(even) {
-  @apply bg-neutral-50 dark:bg-neutral-900;
+  @apply bg-neutral-50 dark:bg-neutral-950;
+}
+
+.markdown tbody tr:nth-child(odd) {
+  @apply bg-white dark:bg-neutral-900;
+}
+.markdown th[align="center"],
+.markdown td[align="center"] {
+  text-align: center;
+}
+
+.markdown th[align="right"],
+.markdown td[align="right"] {
+  text-align: left;
 }
 
 .markdown a {
