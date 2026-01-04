@@ -15,46 +15,69 @@ export type TocLink = {
   level: number
 }
 
-function rehypeCollectToc(toc: TocLink[]) {
+function optimizeImages(node: any, tag: any) {
+  if (tag === 'img') {
+    const props = (node.properties ??= {})
+    if (props.loading == null) props.loading = 'lazy'
+    if (props.decoding == null) props.decoding = 'async'
+    return
+  }
+}
+
+function generateTOC(tag: any, node: any, toc: TocLink[]) {
+  if (!/^h[1-6]$/.test(tag)) return
+
+  const id = node.properties?.id
+  if (typeof id !== 'string' || !id) return
+
+  const text = toString(node).trim()
+  if (!text) return
+
+  toc.push({
+    id,
+    text,
+    level: Number(tag[1]),
+  })
+}
+
+async function rehypeVisitPipes(toc: TocLink[]) {
   return () => (tree: any) => {
     visit(tree, 'element', (node: any) => {
-      const tagName = node.tagName
-      if (typeof tagName !== 'string' || !/^h[1-6]$/.test(tagName)) return
+      const tag = node.tagName
 
-      const id = node.properties?.id
-      if (typeof id !== 'string' || !id) return
+      optimizeImages(node, tag)
 
-      const text = toString(node).trim()
-      if (!text) return
-
-      toc.push({
-        id,
-        text,
-        level: Number(tagName[1]),
-      })
+      generateTOC(tag, node, toc)
     })
   }
 }
 
+const baseProcessor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeSlug)
+  .use(rehypePrettyCode, {
+    theme: 'github-dark',
+    keepBackground: true,
+  })
+  .use(rehypeExternalLinks, {
+    target: '_blank',
+    rel: ['noopener', 'noreferrer'],
+  })
+  .use(rehypeStringify)
+
 export default async function markdownToHtml(markdown: string) {
   const toc: TocLink[] = []
 
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypeSlug)
-    .use(rehypeCollectToc(toc))
-    .use(rehypePrettyCode, {
-      theme: 'github-dark',
-      keepBackground: true,
-    })
-    .use(rehypeExternalLinks, {
-      target: '_blank',
-      rel: ['noopener', 'noreferrer'],
-    })
-    .use(rehypeStringify)
+  const processor = baseProcessor
+
+  const file = await processor()
+    .use(await rehypeVisitPipes(toc))
     .process(markdown)
 
-  return { content: String(file), toc }
+  return {
+    content: String(file),
+    toc,
+  }
 }
