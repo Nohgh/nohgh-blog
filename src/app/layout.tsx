@@ -8,6 +8,9 @@ import Header from './_components/header'
 export const metadata: Metadata = {
   title: `Nohgh Blog`,
   description: `안녕하세요. 노기훈의 블로그입니다.`,
+  icons: {
+    icon: '/favicon/icon.svg',
+  },
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
