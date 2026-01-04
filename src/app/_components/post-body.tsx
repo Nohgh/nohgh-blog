@@ -1,4 +1,5 @@
 import markdownStyles from "./markdown-styles.module.css";
+import PostIsland from "./post-island";
 
 type Props = {
   content: string;
@@ -6,8 +7,12 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="font-gowun max-w-full mx-auto ">
-      <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
+    <div className=" font-gowun max-w-full mx-auto relative ">
+      <PostIsland content={content} />
+      <div
+        className={markdownStyles["markdown"]}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </div>
   );
 }

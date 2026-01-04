@@ -68,8 +68,6 @@ export function getAllPosts(): Post[] {
 function sum(a, b) {
   return a + b;
 }
-
-console.log(hihhihi);
 ```
 
 ```go {2,3,4}
@@ -80,6 +78,8 @@ func main(){
 }
 
 ```
+
+### 안녕하세요. 이번 포스트에서는 이런이런이런이런이런 내용을 다루겠습니다.!!!!!!!!!!!!
 
 Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
 

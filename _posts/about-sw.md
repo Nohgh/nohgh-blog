@@ -10,7 +10,7 @@ ogImage:
   url: "/assets/blog/hello-world/cover.jpg"
 ---
 
-# 이것은 h1 입니다.
+# 소프트웨어에 대한 나의 생각
 
 ## 이것은 h2 입니다.
 
@@ -41,8 +41,6 @@ ogImage:
 function sum(a, b) {
   return a + b;
 }
-
-console.log(hihhihi);
 ```
 
 ```go
