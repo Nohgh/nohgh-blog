@@ -10,7 +10,7 @@
 }
 
 .markdown pre {
-  @apply my-6 p-4 rounded-lg overflow-x-auto bg-neutral-900 text-neutral-100;
+  @apply my-6 p-4 rounded-lg overflow-x-auto bg-neutral-900 text-neutral-100 text-base;
 }
 
 .markdown pre code {
