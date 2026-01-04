@@ -10,7 +10,7 @@ type Props = {
 
 export function PostHeader({ title, coverImage, date }: Props) {
   return (
-    <div className="mt-6">
+    <div className="mt-6 cursor-default">
       <PostTitle>{title}</PostTitle>
       <div className="max-w-2xl">
         <div className="mb-6 text-lg">

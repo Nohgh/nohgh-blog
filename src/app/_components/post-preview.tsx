@@ -15,7 +15,7 @@ export function PostPreview({ title, date, slug }: Props) {
           {title}
         </Link>
       </h3>
-      <div className="md:text-lg text-base ">
+      <div className="md:text-lg text-base cursor-default">
         <DateFormatter dateString={date} />
       </div>
     </div>
