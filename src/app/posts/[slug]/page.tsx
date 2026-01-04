@@ -6,6 +6,7 @@ import Container from "@/app/_components/container";
 import { PostBody } from "@/app/_components/post-body";
 import { PostHeader } from "@/app/_components/post-header";
 import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import PostIsland from "@/app/_components/post-island";
 
 export default async function Post(props: Params) {
   const params = await props.params;
@@ -22,6 +23,7 @@ export default async function Post(props: Params) {
       <Container>
         <article className="mb-32">
           <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} />
+          <PostIsland content={content} />
           <PostBody content={content} />
         </article>
       </Container>

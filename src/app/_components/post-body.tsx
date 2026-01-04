@@ -8,11 +8,7 @@ type Props = {
 export function PostBody({ content }: Props) {
   return (
     <div className=" font-gowun max-w-full mx-auto relative ">
-      <PostIsland content={content} />
-      <div
-        className={markdownStyles["markdown"]}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
+      <div className={markdownStyles["markdown"]} dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
 }
