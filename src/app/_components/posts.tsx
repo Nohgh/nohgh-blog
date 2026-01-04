@@ -22,7 +22,7 @@ export function Posts({ posts }: Props) {
     <section className="font-gowun mb-32">
       {Array.from(postsByYear.entries()).map(([year, yearPosts]) => (
         <div key={year} className="mb-16 pb-5 border-b dark:border-neutral-800 ">
-          <h1 className="mb-8 text-xl md:text-2xl tracking-tighter leading-tight font-bold dark:text-neutral-500 text-neutral-600">
+          <h1 className="mb-8 text-xl md:text-2xl tracking-tighter leading-tight font-bold dark:text-neutral-500 text-neutral-600 cursor-default">
             {year}
           </h1>
 

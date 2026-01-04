@@ -20,8 +20,20 @@ export function getPostBySlug(slug: string) {
 export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
   const posts = slugs
-    .map(slug => getPostBySlug(slug))
+    .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
+}
+
+export function getRelativePosts(slug: string) {
+  const allPosts = getAllPosts(); // date desc
+  const index = allPosts.findIndex((p) => p.slug === slug);
+
+  if (index === -1) return { newer: null, older: null };
+
+  const newer = allPosts[index - 1] ?? null;
+  const older = allPosts[index + 1] ?? null;
+
+  return { newer, older };
 }
