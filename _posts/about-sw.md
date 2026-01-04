@@ -37,9 +37,16 @@ ogImage:
 
 ---
 
-```ts {highlightLines: [1]}
+```ts filename="post-footer.tsx" {2-6}
 function sum(a, b) {
   return a + b
+}
+
+function post() {
+  // 1
+  // 2
+  // 3
+  // 4
 }
 ```
 

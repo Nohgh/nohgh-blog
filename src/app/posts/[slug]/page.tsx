@@ -17,14 +17,14 @@ export default async function Post(props: Params) {
     return notFound()
   }
 
-  const content = await markdownToHtml(post.content)
+  const { content, toc } = await markdownToHtml(post.content)
 
   return (
     <main>
       <Container>
         <article className="mb-32">
           <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} />
-          <PostIsland content={content} />
+          <PostIsland toc={toc} />
           <PostBody content={content} />
           <PostFooter slug={post.slug} />
         </article>

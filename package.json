@@ -12,6 +12,7 @@
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
     "gray-matter": "^4.0.3",
+    "hast-util-to-string": "^3.0.1",
     "next": "latest",
     "react": "^19",
     "react-dom": "^19",
@@ -25,7 +26,8 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "shiki": "^3.20.0",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.14.8",
