@@ -20,9 +20,15 @@ importers:
       hast-util-to-string:
         specifier: ^3.0.1
         version: 3.0.1
+      local-ip-url:
+        specifier: ^1.0.10
+        version: 1.0.10
       next:
         specifier: latest
         version: 16.1.1(@babel/core@7.28.5)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      qrcode-terminal:
+        specifier: ^0.12.0
+        version: 0.12.0
       react:
         specifier: ^19
         version: 19.2.3
@@ -1581,6 +1587,9 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  local-ip-url@1.0.10:
+    resolution: {integrity: sha512-CtwzPEuFFb1EaDvmWFDy7SxnhQyYb7tYZOwr2dvk++ZlJhWZJTWAKZsqyVr5apgY63gVx+e3AMqkmFDnkcQTMA==}
+
   locate-path@6.0.0:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
@@ -1965,6 +1974,10 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
+
+  qrcode-terminal@0.12.0:
+    resolution: {integrity: sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==}
+    hasBin: true
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -4039,6 +4052,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
+  local-ip-url@1.0.10: {}
+
   locate-path@6.0.0:
     dependencies:
       p-locate: 5.0.0
@@ -4586,6 +4601,8 @@ snapshots:
   property-information@7.1.0: {}
 
   punycode@2.3.1: {}
+
+  qrcode-terminal@0.12.0: {}
 
   queue-microtask@1.2.3: {}
 
