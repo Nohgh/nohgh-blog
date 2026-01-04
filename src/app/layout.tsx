@@ -1,9 +1,9 @@
-import "./globals.css";
-import { HOME_OG_IMAGE_URL } from "@/lib/constants";
-import type { Metadata } from "next";
-import cn from "classnames";
-import { Gowun } from "./fonts";
-import Header from "./_components/header";
+import './globals.css'
+import { HOME_OG_IMAGE_URL } from '@/lib/constants'
+import type { Metadata } from 'next'
+import cn from 'classnames'
+import { Gowun } from './fonts'
+import Header from './_components/header'
 
 export const metadata: Metadata = {
   title: `Nohgh Blog`,
@@ -11,23 +11,23 @@ export const metadata: Metadata = {
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={cn(Gowun.variable)}>
       <body
         className={cn(
-          "flex min-h-screen flex-col dark:bg-zinc-900 dark:text-neutral-400 bg-[#FFF9F4]"
+          'flex min-h-screen flex-col dark:bg-zinc-900 dark:text-neutral-400 bg-[#FFF9F4]',
         )}
       >
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
       </body>
     </html>
-  );
+  )
 }

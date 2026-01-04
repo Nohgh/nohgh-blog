@@ -1,4 +1,4 @@
-import Container from "@/app/_components/container";
+import Container from '@/app/_components/container'
 
 export default function About() {
   return (
@@ -7,5 +7,5 @@ export default function About() {
         <div>About page입니다.</div>
       </Container>
     </main>
-  );
+  )
 }

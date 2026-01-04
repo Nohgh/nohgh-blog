@@ -1,8 +1,8 @@
-import { getRelativePosts } from "@/lib/api";
-import Link from "next/link";
+import { getRelativePosts } from '@/lib/api'
+import Link from 'next/link'
 
 export default function PostFooter({ slug }: { slug: string }) {
-  const { newer, older } = getRelativePosts(slug);
+  const { newer, older } = getRelativePosts(slug)
 
   return (
     <footer className="mt-2 border-t-[2px] border-neutral-200 dark:border-neutral-800">
@@ -35,5 +35,5 @@ export default function PostFooter({ slug }: { slug: string }) {
         </div>
       </nav>
     </footer>
-  );
+  )
 }

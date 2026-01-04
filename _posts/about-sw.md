@@ -1,13 +1,13 @@
 ---
-title: "소프트웨어에 대한 나의 생각"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/assets/blog/hello-world/cover.jpg"
-date: "2024-01-04"
+title: '소프트웨어에 대한 나의 생각'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+coverImage: '/assets/blog/hello-world/cover.jpg'
+date: '2024-01-04'
 author:
   name: Tim Neutkens
-  picture: "/assets/blog/authors/tim.jpeg"
+  picture: '/assets/blog/authors/tim.jpeg'
 ogImage:
-  url: "/assets/blog/hello-world/cover.jpg"
+  url: '/assets/blog/hello-world/cover.jpg'
 ---
 
 # 소프트웨어에 대한 나의 생각
@@ -39,7 +39,7 @@ ogImage:
 
 ```ts {highlightLines: [1]}
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 ```
 

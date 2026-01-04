@@ -1,13 +1,13 @@
 ---
-title: "휴학을 하며 느낀 점"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/assets/blog/dynamic-routing/cover.jpg"
-date: "2020-03-15"
+title: '휴학을 하며 느낀 점'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+coverImage: '/assets/blog/dynamic-routing/cover.jpg'
+date: '2020-03-15'
 author:
   name: JJ Kasper
-  picture: "/assets/blog/authors/jj.jpeg"
+  picture: '/assets/blog/authors/jj.jpeg'
 ogImage:
-  url: "/assets/blog/dynamic-routing/cover.jpg"
+  url: '/assets/blog/dynamic-routing/cover.jpg'
 ---
 
 ---
@@ -39,7 +39,7 @@ Lorem `ipsum` dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 
 ```ts {highlightLines: [1]}
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 ```
 

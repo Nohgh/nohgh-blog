@@ -1,11 +1,11 @@
-import Link from "next/link";
-import DateFormatter from "./date-formatter";
+import Link from 'next/link'
+import DateFormatter from './date-formatter'
 
 type Props = {
-  title: string;
-  date: string;
-  slug: string;
-};
+  title: string
+  date: string
+  slug: string
+}
 
 export function PostPreview({ title, date, slug }: Props) {
   return (
@@ -19,5 +19,5 @@ export function PostPreview({ title, date, slug }: Props) {
         <DateFormatter dateString={date} />
       </div>
     </div>
-  );
+  )
 }

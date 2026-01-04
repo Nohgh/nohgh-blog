@@ -1,6 +1,6 @@
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ["cyrillic"] });
+const inter = Inter({ subsets: ['cyrillic'] })
 
 export function Intro() {
   return (
@@ -11,5 +11,5 @@ export function Intro() {
         Nohgh.
       </h3>
     </section>
-  );
+  )
 }

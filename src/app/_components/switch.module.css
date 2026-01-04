@@ -11,7 +11,7 @@
   transition: all 0.3s ease-in-out 0s !important;
 }
 
-[data-mode="system"] .switch::after {
+[data-mode='system'] .switch::after {
   height: 100%;
   width: 100%;
   top: 0;
@@ -21,16 +21,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  content: "S";
+  content: 'S';
 }
 
-[data-mode="light"] .switch {
+[data-mode='light'] .switch {
   box-shadow: 0 0 10px 0px rgb(226, 226, 219);
 }
 
-[data-mode="dark"] .switch {
-  box-shadow: calc(var(--size) / 4) calc(var(--size) / -4) calc(var(--size) / 8)
-    inset #fff;
+[data-mode='dark'] .switch {
+  box-shadow: calc(var(--size) / 4) calc(var(--size) / -4) calc(var(--size) / 8) inset #fff;
   border: none;
   background: transparent;
   animation: n linear 0.5s;

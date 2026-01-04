@@ -1,12 +1,12 @@
-import CoverImage from "./cover-image";
-import DateFormatter from "./date-formatter";
-import { PostTitle } from "@/app/_components/post-title";
+import CoverImage from './cover-image'
+import DateFormatter from './date-formatter'
+import { PostTitle } from '@/app/_components/post-title'
 
 type Props = {
-  title: string;
-  coverImage: string;
-  date: string;
-};
+  title: string
+  coverImage: string
+  date: string
+}
 
 export function PostHeader({ title, coverImage, date }: Props) {
   return (
@@ -21,5 +21,5 @@ export function PostHeader({ title, coverImage, date }: Props) {
         {coverImage && <CoverImage title={title} src={coverImage} />}
       </div>
     </div>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { ThemeSwitcher } from "./theme-switcher";
+import Link from 'next/link'
+import { ThemeSwitcher } from './theme-switcher'
 
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
       </Link>
       <ThemeSwitcher />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

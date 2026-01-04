@@ -1,20 +1,20 @@
-import { Post } from "@/interfaces/post";
-import { PostPreview } from "./post-preview";
+import { Post } from '@/interfaces/post'
+import { PostPreview } from './post-preview'
 
 type Props = {
-  posts: Post[];
-};
+  posts: Post[]
+}
 
 export function Posts({ posts }: Props) {
-  const postsByYear = new Map<string, Post[]>();
+  const postsByYear = new Map<string, Post[]>()
 
   for (const post of posts) {
-    const year = post.date.split(" ")[0].split("-")[0];
-    const bucket = postsByYear.get(year);
+    const year = post.date.split(' ')[0].split('-')[0]
+    const bucket = postsByYear.get(year)
     if (bucket) {
-      bucket.push(post);
+      bucket.push(post)
     } else {
-      postsByYear.set(year, [post]);
+      postsByYear.set(year, [post])
     }
   }
 
@@ -27,12 +27,12 @@ export function Posts({ posts }: Props) {
           </h1>
 
           <div className="grid grid-cols-1 md:grid-cols-1 md:gap-x-16 lg:gap-x-32 gap-y-11 md:gap-y-10 xl:gap-y-14">
-            {yearPosts.map(post => (
+            {yearPosts.map((post) => (
               <PostPreview key={post.slug} title={post.title} date={post.date} slug={post.slug} />
             ))}
           </div>
         </div>
       ))}
     </section>
-  );
+  )
 }

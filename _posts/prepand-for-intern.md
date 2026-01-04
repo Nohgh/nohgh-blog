@@ -1,45 +1,45 @@
 ---
-title: "인턴을 준비하며"
-excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus."
-coverImage: "/assets/blog/preview/cover.jpg"
-date: "2025-01-02"
+title: '인턴을 준비하며'
+excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
+coverImage: '/assets/blog/preview/cover.jpg'
+date: '2025-01-02'
 author:
   name: Joe Haddad
-  picture: "/assets/blog/authors/joe.jpeg"
+  picture: '/assets/blog/authors/joe.jpeg'
 ogImage:
-  url: "/assets/blog/preview/cover.jpg"
+  url: '/assets/blog/preview/cover.jpg'
 ---
 
 ---
 
 ```tsx
-import { Post } from "@/interfaces/post";
-import fs from "fs";
-import matter from "gray-matter";
-import { join } from "path";
+import { Post } from '@/interfaces/post'
+import fs from 'fs'
+import matter from 'gray-matter'
+import { join } from 'path'
 
-const postsDirectory = join(process.cwd(), "_posts");
+const postsDirectory = join(process.cwd(), '_posts')
 
 export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory);
+  return fs.readdirSync(postsDirectory)
 }
 
 export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const realSlug = slug.replace(/\.md$/, '')
+  const fullPath = join(postsDirectory, `${realSlug}.md`)
+  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const { data, content } = matter(fileContents)
 
-  return { ...data, slug: realSlug, content } as Post;
+  return { ...data, slug: realSlug, content } as Post
 }
 
 export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
+  const slugs = getPostSlugs()
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-  return posts;
+    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  return posts
 }
 ```
 
@@ -66,7 +66,7 @@ export function getAllPosts(): Post[] {
 
 ```ts
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 ```
 
@@ -107,15 +107,15 @@ Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris 
 
 [GOOGLE](https://google.com)
 
-[NAVER](https://naver.com "링크 설명(title)을 작성하세요.")
+[NAVER](https://naver.com '링크 설명(title)을 작성하세요.')
 
 [상대적 참조](../users/login)
 
-![대체 텍스트(Alternative Text)](https://picsum.photos/1000/400 "링크 설명(Title)")
+![대체 텍스트(Alternative Text)](https://picsum.photos/1000/400 '링크 설명(Title)')
 
 ![이미지입니다!][Image]
 
-[Image]: https://picsum.photos/500/300 "이미지입니다!"
+[Image]: https://picsum.photos/500/300 '이미지입니다!'
 
 ---
 
