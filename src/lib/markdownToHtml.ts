@@ -45,6 +45,8 @@ async function rehypeVisitPipes(toc: TocLink[]) {
     visit(tree, 'element', (node: any) => {
       const tag = node.tagName
 
+      if (!tag) return
+
       optimizeImages(node, tag)
 
       generateTOC(tag, node, toc)

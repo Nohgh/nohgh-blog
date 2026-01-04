@@ -9,6 +9,12 @@
   @apply my-6;
 }
 
+.markdown blockquote {
+  @apply my-6 px-2 dark:bg-neutral-600;
+  @apply border-l-4 border-neutral-300 dark:border-neutral-500;
+  @apply italic;
+}
+
 .markdown pre {
   @apply my-6 p-4 rounded-lg overflow-x-auto bg-neutral-900 text-neutral-100 text-base;
 }
