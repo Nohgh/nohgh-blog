@@ -36,7 +36,9 @@ export default function PostIsland({ content }: Props) {
         <a
           key={item.id}
           href={`#${item.id}`}
-          className={cn("block border-l border-neutral-700 px-4 py-1")}
+          className={
+            "block border-l dark:border-neutral-700 px-4 py-1 text-neutral-500 dark:text-neutral-500 "
+          }
         >
           {item.text}
         </a>
