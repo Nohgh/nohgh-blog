@@ -15,7 +15,9 @@ export default function About() {
                   src="/assets/about/gihoon-profile.JPG"
                   alt="프로필 사진"
                   fill
+                  quality={70}
                   className="object-cover"
+                  priority
                 />
               </div>
               <div className="text-base text-neutral-600 dark:text-neutral-500 mt-2 underline-offset-4">
