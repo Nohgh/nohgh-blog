@@ -1,5 +1,5 @@
 # basic
-- about page
+- about page // 완료
 - 매타데이터 설정 // 완료
 - ci/cd
 - 테스트코드 작성 // 선택
@@ -13,10 +13,9 @@
 - 배포 전 휴대폰 확인 용으로 qr 유틸 생성 // 완료
 - 포스트작성을 위한 툴 개발
 
-# Additional
+# additional
 - rss 제공
 - 접근성 개선
-
 
 # new value 
 - cursor effect
