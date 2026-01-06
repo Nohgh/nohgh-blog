@@ -1,4 +1,4 @@
-import { getRelativePosts } from '@/lib/api'
+import { getRelativePosts } from '@/lib/post-api'
 import Link from 'next/link'
 
 export default function PostFooter({ slug }: { slug: string }) {

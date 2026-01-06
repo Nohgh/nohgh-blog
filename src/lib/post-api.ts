@@ -1,4 +1,4 @@
-import { Post } from '@/interfaces/post'
+import type { Post } from '@/interfaces/post'
 import fs from 'fs'
 import matter from 'gray-matter'
 import { join } from 'path'
@@ -36,4 +36,22 @@ export function getRelativePosts(slug: string) {
   const older = allPosts[index + 1] ?? null
 
   return { newer, older }
+}
+
+type PostsByYear = [string, Post[]][]
+
+export function getPostsByYear(posts: Post[]): PostsByYear {
+  const yearMap = new Map<string, Post[]>()
+
+  for (const post of posts) {
+    const year = post.date.split(' ')[0].split('-')[0]
+    const c = yearMap.get(year)
+    if (c) {
+      c.push(post)
+    } else {
+      yearMap.set(year, [post])
+    }
+  }
+
+  return Array.from(yearMap.entries())
 }
