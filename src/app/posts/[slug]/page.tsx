@@ -53,7 +53,7 @@ export async function generateMetadata(props: Params): Promise<Metadata> {
     title,
     openGraph: {
       title,
-      images: [post.ogImage.url || HOME_OG_IMAGE_URL],
+      images: [post?.ogImage?.url || HOME_OG_IMAGE_URL],
     },
   }
 }

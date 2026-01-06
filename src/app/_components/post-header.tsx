@@ -4,7 +4,7 @@ import { PostTitle } from '@/app/_components/post-title'
 
 type Props = {
   title: string
-  coverImage: string
+  coverImage?: string
   date: string
 }
 

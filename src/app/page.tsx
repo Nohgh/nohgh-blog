@@ -4,13 +4,13 @@ import { getAllPosts } from '@/lib/post-api'
 import { Posts } from './_components/posts'
 
 export default function Index() {
-  const allPosts = getAllPosts()
+  const posts = getAllPosts()
 
   return (
     <main>
       <Container>
         <Intro />
-        <Posts posts={allPosts} />
+        <Posts posts={posts} />
       </Container>
     </main>
   )

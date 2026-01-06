@@ -1,6 +1,7 @@
 import type { Post } from '@/interfaces/post'
 import { PostPreview } from './post-preview'
 import { getPostsByYear } from '@/lib/post-api'
+import { randomUUID } from 'crypto'
 
 type Props = {
   posts: Post[]
@@ -19,7 +20,13 @@ export function Posts({ posts }: Props) {
 
           <div className="grid grid-cols-1 md:grid-cols-1 md:gap-x-16 lg:gap-x-32 gap-y-11 md:gap-y-10 xl:gap-y-14">
             {posts.map((post) => (
-              <PostPreview key={post.slug} title={post.title} date={post.date} slug={post.slug} />
+              <PostPreview
+                key={post.slug + randomUUID}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+                images={[...(post.coverImage ? [post.coverImage] : []), ...(post.images ?? [])]}
+              />
             ))}
           </div>
         </div>
