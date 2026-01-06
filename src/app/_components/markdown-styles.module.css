@@ -124,3 +124,9 @@
     dark:decoration-blue-500
     dark:hover:text-blue-300;
 }
+
+.markdown img {
+  @apply block max-w-full h-auto my-6 mx-auto;
+  max-height: min(70vh, 900px);
+  object-fit: contain;
+}
