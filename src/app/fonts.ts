@@ -14,5 +14,4 @@ export const Gowun = localFont({
     },
   ],
   variable: '--font-gowun',
-  display: 'swap',
 })

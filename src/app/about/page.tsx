@@ -17,7 +17,7 @@ export default function About() {
                   fill
                   quality={70}
                   className="object-cover"
-                  priority
+                  preload={true}
                 />
               </div>
               <div className="text-base text-neutral-600 dark:text-neutral-500 mt-2 underline-offset-4">
@@ -52,9 +52,8 @@ export default function About() {
               <div className="text-lg mr-8 flex flex-col gap-1">
                 <p>안녕하세요. 노기훈입니다.</p>
                 <p>
-                  대학시절 내내 프론트엔드 엔지니어라는 꿈을 품고 지냈지만, 현재는(2025.12)
-                  소프트웨어로 해결 가능한 일을 성공적으로 마칠 수 있는 소프트웨어 엔지니어를 꿈꾸고
-                  있습니다.
+                  대학시절 내내 프론트엔드 엔지니어라는 꿈을 품고 지냈지만, 현재는 소프트웨어로 해결
+                  가능한 일을 성공적으로 마칠 수 있는 소프트웨어 엔지니어를 꿈꾸고 있습니다.
                 </p>
                 <p>
                   아직 가장 잘하고 많이 한 것이 프론트엔드이지만 앞으로 긴 소프트웨어 엔지니어로서
