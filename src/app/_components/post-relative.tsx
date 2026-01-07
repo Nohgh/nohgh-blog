@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import type { Post } from '@/interfaces/post'
-import { prefetchPostImages } from '@/lib/prefetch-post-images'
+import { cacheImages } from '@/lib/cache-images'
 
 type RelativeType = 'newer' | 'older'
 
@@ -15,7 +15,7 @@ export function PostRelative({ post, images, type }: Props) {
   return (
     <div
       className="text-neutral-600 dark:text-neutral-500"
-      onMouseEnter={() => prefetchPostImages(images)}
+      onMouseEnter={() => cacheImages(images)}
     >
       <div className="text-sm mb-2 cursor-default">{type === 'newer' ? '다음 글' : '이전 글'}</div>
       <Link
