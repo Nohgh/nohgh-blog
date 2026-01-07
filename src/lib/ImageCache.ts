@@ -1,6 +1,7 @@
 export class ImageCache {
   private static instance: ImageCache | null = null
   private cached = new Set<string>()
+  private failed = new Set<string>()
 
   private constructor() {}
 
@@ -11,8 +12,16 @@ export class ImageCache {
     return ImageCache.instance
   }
 
-  private prefetch(image: string) {
-    if (this.cached.has(image)) return
+  private isValidCache(image: string) {
+    if (this.cached.has(image) || this.failed.has(image)) {
+      return false
+    }
+
+    return true
+  }
+
+  private cacheImage(image: string) {
+    if (!this.isValidCache(image)) return
 
     const img = new Image()
 
@@ -20,14 +29,15 @@ export class ImageCache {
       this.cached.add(image)
     }
 
-    // error시 별도의 처리 x
-    img.onerror = () => {}
+    img.onerror = () => {
+      this.failed.add(image)
+    }
 
     img.src = image
   }
 
   all(images: string[]) {
-    images.forEach((image) => this.prefetch(image))
+    images.forEach((image) => this.cacheImage(image))
   }
 
   isCached(image: string) {
