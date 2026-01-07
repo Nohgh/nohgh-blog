@@ -83,7 +83,14 @@ const Switch = () => {
     const index = modes.indexOf(mode)
     setMode(modes[(index + 1) % modes.length])
   }
-  return <button suppressHydrationWarning className={styles.switch} onClick={handleModeSwitch} />
+  return (
+    <button
+      suppressHydrationWarning
+      className={styles.switch}
+      onClick={handleModeSwitch}
+      aria-label="theme-switch"
+    />
+  )
 }
 
 const Script = memo(() => (
