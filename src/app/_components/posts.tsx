@@ -1,6 +1,6 @@
 import type { Post } from '@/interfaces/post'
 import { PostPreview } from './post-preview'
-import { getPostsByYear } from '@/lib/post-api'
+import { getPostsByYear, getPostImages } from '@/lib/post-api'
 import { randomUUID } from 'crypto'
 
 type Props = {
@@ -25,7 +25,7 @@ export function Posts({ posts }: Props) {
                 title={post.title}
                 date={post.date}
                 slug={post.slug}
-                images={[...(post.coverImage ? [post.coverImage] : []), ...(post.images ?? [])]}
+                images={getPostImages(post)}
               />
             ))}
           </div>

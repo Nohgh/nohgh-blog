@@ -55,3 +55,7 @@ export function getPostsByYear(posts: Post[]): PostsByYear {
 
   return Array.from(yearMap.entries())
 }
+
+export function getPostImages(post: Post) {
+  return [...(post.coverImage ? [post.coverImage] : []), ...(post.images ?? [])]
+}
