@@ -1,30 +1,30 @@
 # basic
-# -- 완료 --
-- about page 
-- 매타데이터 설정 
-- 배포 전 휴대폰 확인 용으로 qr 유틸 생성 
-- 도메인 구입 및 연결 
-- 포스트 기본 이미지 설정 
-- og 확인 및 설정 
-- post-body image preload
-# -- 미완료 --
-- about page profile preload 
-- ci/cd
-- 테스트코드 작성 // 선택
-- 애널리틱스 연동
-- 리펙터링
-- 예시 파일 정리 및 포스트 작성
-- readme 작성
-- 포스트 작성을 위한 툴 개발
-- 포스트가 없을 경우의 에러처리
+    # -- 완료 --
+        - about page 
+        - 매타데이터 설정 
+        - 배포 전 휴대폰 확인 용으로 qr 유틸 생성 
+        - 도메인 구입 및 연결 
+        - 포스트 기본 이미지 설정 
+        - og 확인 및 설정 
+        - post-body image preload
+        - about page profile preload 
+
+    # -- 미완료 --
+        - import rule 
+        - cursor effect
+        - 포스트 작성을 위한 툴 개발
+        - 리펙터링
+        - 애널리틱스 연동
+        - ci/cd
+        - 테스트코드 작성 // 선택
+        - 예시 파일 정리 및 포스트 작성
+        - readme 작성
 
 # additional
-- rss 제공
-- 접근성 개선
+    - rss 제공
+    - 접근성 개선
 
 # new value 
-- cursor effect
-- 네트워크 상태 알림
-- 뉴런 시각화를 위한 각 포스트당 핵심 태그(개념) 속성 추가
-- 짧은 글 제공
-- 포트폴리오()
+    - 네트워크 상태 알림
+    - 뉴런 시각화를 위한 각 포스트당 핵심 태그(개념) 속성 추가
+    - 짧은 글 제공
