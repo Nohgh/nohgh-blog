@@ -34,9 +34,7 @@ export default async function Post(props: Params) {
 }
 
 type Params = {
-  params: Promise<{
-    slug: string
-  }>
+  params: { slug: string }
 }
 
 export async function generateMetadata(props: Params): Promise<Metadata> {
