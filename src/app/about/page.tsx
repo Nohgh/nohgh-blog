@@ -1,4 +1,5 @@
 import Container from '@/app/_components/container'
+import { PROFILE_IMAGE_URL } from '@/lib/constants'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -12,7 +13,7 @@ export default function About() {
             <div className="flex flex-col justify-around items-center sm:items-start">
               <div className="relative h-[200px] w-[250px] flex-none overflow-hidden rounded-lg">
                 <Image
-                  src="/assets/about/gihoon-profile.JPG"
+                  src={PROFILE_IMAGE_URL}
                   alt="프로필 사진"
                   fill
                   quality={70}

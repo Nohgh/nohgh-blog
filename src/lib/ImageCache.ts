@@ -38,10 +38,11 @@ export class ImageCache {
     this.cached.clear()
   }
 }
+
 // 싱글톤 프로바이더
 let ImageCacheProvider: () => ImageCache = () => ImageCache.getInstance()
 
-// 싱글톤 인스턴스
+// 싱글톤 인스턴스 주입
 export function getImageCacheInstance(): ImageCache {
   return ImageCacheProvider()
 }
