@@ -1,5 +1,5 @@
-import { getPostImages, getRelativePosts } from '@/lib/post-api'
 import { PostRelative } from './post-relative'
+import { getPostImages, getRelativePosts } from '@/lib/post-api'
 
 export default function PostFooter({ slug }: { slug: string }) {
   const { newer, older } = getRelativePosts(slug)

@@ -1,9 +1,9 @@
 import './globals.css'
-import { HOME_OG_IMAGE_URL } from '@/lib/constants'
-import type { Metadata } from 'next'
 import cn from 'classnames'
-import { Gowun } from './fonts'
+import type { Metadata } from 'next'
 import Header from './_components/header'
+import { Gowun } from './fonts'
+import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: `Nohgh Blog`,

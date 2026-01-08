@@ -1,13 +1,13 @@
-import { unified } from 'unified'
+import { toString } from 'hast-util-to-string'
+import rehypeExternalLinks from 'rehype-external-links'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import rehypeStringify from 'rehype-stringify'
+import remarkGfm from 'remark-gfm'
 import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
-import rehypePrettyCode from 'rehype-pretty-code'
-import rehypeExternalLinks from 'rehype-external-links'
-import rehypeSlug from 'rehype-slug'
-import remarkGfm from 'remark-gfm'
+import { unified } from 'unified'
 import { visit } from 'unist-util-visit'
-import { toString } from 'hast-util-to-string'
 
 export type TocLink = {
   id: string

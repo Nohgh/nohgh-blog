@@ -1,7 +1,7 @@
-import Container from '@/app/_components/container'
-import { PROFILE_IMAGE_URL } from '@/lib/constants'
 import Image from 'next/image'
 import Link from 'next/link'
+import Container from '@/app/_components/container'
+import { PROFILE_IMAGE_URL } from '@/lib/constants'
 
 export default function About() {
   return (
