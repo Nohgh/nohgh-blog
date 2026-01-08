@@ -10,6 +10,7 @@
         - about page profile preload 
         - import rule 
         - 애널리틱스 연동
+        - 외부 url의 사진 처리
 
     # -- 미완료 --
         - 포스트 작성을 위한 툴 개발
@@ -18,7 +19,6 @@
         - 테스트코드 작성 // 선택
         - 예시 파일 정리 및 포스트 작성
         - readme 작성
-        - 외부 url의 사진 처리
 # additional
     - rss 제공
     - 접근성 개선
