@@ -16,6 +16,7 @@ export default function About() {
                   src={PROFILE_IMAGE_URL}
                   alt="프로필 사진"
                   fill
+                  sizes="250px"
                   quality={70}
                   className="object-cover"
                   preload={true}
