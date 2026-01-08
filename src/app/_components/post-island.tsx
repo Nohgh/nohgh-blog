@@ -1,3 +1,4 @@
+import styles from './post-island-scroll.module.css'
 import { TocLink } from '@/lib/markdownToHtml'
 
 interface Props {
@@ -6,7 +7,9 @@ interface Props {
 
 export default function PostIsland({ toc }: Props) {
   return (
-    <nav className="fixed top-36 right-12 w-64 hidden xl:inline-block">
+    <nav
+      className={`${styles['toc-scroll']} fixed top-36 right-12 w-64 max-h-[calc(100vh-9rem)] pb-6 overflow-y-auto hidden xl:inline-block`}
+    >
       {toc.map((item) => (
         <a
           key={item.id}
