@@ -8,10 +8,9 @@
         - og 확인 및 설정 
         - post-body image preload
         - about page profile preload 
+        - import rule 
 
     # -- 미완료 --
-        - import rule 
-        - cursor effect
         - 포스트 작성을 위한 툴 개발
         - 리펙터링
         - 애널리틱스 연동
@@ -23,10 +22,10 @@
 # additional
     - rss 제공
     - 접근성 개선
-    - 폰트 최적화 (https://yceffort.kr/2021/06/ways-to-faster-web-fonts)
     
 # new value 
     - 네트워크 상태 알림
     - 뉴런 시각화를 위한 각 포스트당 핵심 태그(개념) 속성 추가
     - 짧은 글 제공
-    - 마크다운에 글을 작성 -> cli가 자동으로 메타데이터 생성, 타입 검증, markdownToHtml을 이용한 미리보기 제공 
+    - cursor effect
+    - 마크다운에 글을 작성 -> cli가 자동으로 메타데이터 생성, 타입 검증, markdownToHtml을 이용한 미리보기 제공

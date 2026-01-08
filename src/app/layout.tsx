@@ -2,6 +2,7 @@ import './globals.css'
 import cn from 'classnames'
 import type { Metadata } from 'next'
 import Header from './_components/header'
+import { Analytics } from './analytics'
 import { Gowun } from './fonts'
 import { HOME_OG_IMAGE_URL } from '@/lib/constants'
 
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Header />
         <div className="flex flex-1 flex-col">{children}</div>
       </body>
+      <Analytics />
     </html>
   )
 }
