@@ -3,8 +3,9 @@ import { join } from 'path'
 import matter from 'gray-matter'
 import type { Post } from '@/interfaces/post'
 
+const POST_DIRECTORY = '__posts__'
 const FILTER_SLUG_PREFIX = 'private'
-const postsDirectory = join(process.cwd(), '_posts')
+const postsDirectory = join(process.cwd(), POST_DIRECTORY)
 
 function _filterSlug(slug: string) {
   return !slug.startsWith(FILTER_SLUG_PREFIX)
