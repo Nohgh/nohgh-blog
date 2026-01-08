@@ -3,10 +3,15 @@ import { join } from 'path'
 import matter from 'gray-matter'
 import type { Post } from '@/interfaces/post'
 
+const FILTER_SLUG_PREFIX = 'private'
 const postsDirectory = join(process.cwd(), '_posts')
 
-export function getPostSlugs() {
-  return fs.readdirSync(postsDirectory)
+function _filterSlug(slug: string) {
+  return !slug.startsWith(FILTER_SLUG_PREFIX)
+}
+
+function _getPostSlugs() {
+  return fs.readdirSync(postsDirectory).filter(_filterSlug)
 }
 
 export function getPostBySlug(slug: string) {
@@ -18,7 +23,7 @@ export function getPostBySlug(slug: string) {
 }
 
 export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs()
+  const slugs = _getPostSlugs()
   const posts = slugs
     .map((slug) => getPostBySlug(slug))
     // sort posts by date in descending order
