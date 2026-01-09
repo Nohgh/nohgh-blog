@@ -2,38 +2,88 @@ import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 import type { Post } from '@/interfaces/post'
+import { PostSchema } from '@/interfaces/post-schema'
 
-const POST_DIRECTORY = '__posts__'
+// ----- constants ----- //
+
 const FILTER_SLUG_PREFIX = 'private'
-const postsDirectory = join(process.cwd(), POST_DIRECTORY)
+const POST_DIR_NAME = '__posts__'
+const POSTS_DIR_PATH = join(process.cwd(), POST_DIR_NAME)
+
+// ----- private functions ----- //
 
 function _filterSlug(slug: string) {
   return !slug.startsWith(FILTER_SLUG_PREFIX)
 }
 
 function _getPostSlugs() {
-  return fs.readdirSync(postsDirectory).filter(_filterSlug)
+  return fs.readdirSync(POSTS_DIR_PATH).filter(_filterSlug)
 }
 
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(postsDirectory, `${realSlug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const { data, content } = matter(fileContents)
-  return { ...data, slug: realSlug, content } as Post
+function _getSlugWithoutExtension(slug: string) {
+  return slug.replace(/\.md$/, '')
+}
+
+function _getPostFilePath(slug: string) {
+  return join(POSTS_DIR_PATH, `${slug}.md`)
+}
+
+function _readPostFile(path: string) {
+  return fs.readFileSync(path, 'utf-8')
+}
+
+function _parseMarkdown(fileContents: string) {
+  return matter(fileContents)
+}
+
+function _validatePost(input: unknown): Post {
+  const parsedPostResult = PostSchema.safeParse(input)
+
+  if (!parsedPostResult.success) {
+    throw new Error(
+      parsedPostResult.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('\n'),
+    )
+  }
+
+  return parsedPostResult.data
+}
+
+function _getPostTimestamp(post: Post) {
+  return new Date(post.date).getTime()
+}
+
+function _comparePostByDateDesc(a: Post, b: Post) {
+  return _getPostTimestamp(b) - _getPostTimestamp(a)
+}
+
+// ----- public functions ----- //
+
+export function getPostBySlug(slug: string): Post {
+  const _slug = _getSlugWithoutExtension(slug)
+
+  const postFilePath = _getPostFilePath(_slug)
+
+  const fileContents = _readPostFile(postFilePath)
+
+  const { data: frontMatter, content } = _parseMarkdown(fileContents)
+
+  const post = _validatePost({
+    ...frontMatter,
+    slug: _slug,
+    content,
+  })
+
+  return post
 }
 
 export function getAllPosts(): Post[] {
   const slugs = _getPostSlugs()
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
+  const posts = slugs.map((slug) => getPostBySlug(slug)).sort(_comparePostByDateDesc)
   return posts
 }
 
 export function getRelativePosts(slug: string) {
-  const allPosts = getAllPosts() // date desc
+  const allPosts = getAllPosts()
   const index = allPosts.findIndex((p) => p.slug === slug)
 
   if (index === -1) return { newer: null, older: null }
@@ -45,7 +95,6 @@ export function getRelativePosts(slug: string) {
 }
 
 type PostsByYear = [string, Post[]][]
-
 export function getPostsByYear(posts: Post[]): PostsByYear {
   const yearMap = new Map<string, Post[]>()
 
