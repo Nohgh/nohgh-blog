@@ -1,9 +1,6 @@
 ---
 title: '직접 화상채팅 구현하기 (with WebRTC)'
-coverImage: ''
 date: '2025-02-24'
-ogImage:
-  url: 'https://velog.velcdn.com/images/kiki01111/post/459b381f-62f7-46b4-9130-b6eb962a7ba9/image.png'
 ---
 
 작년 캡스톤 디자인, 하계 오픈소스 해커톤에서 개발하였던 화상채팅을 개발하며 배운 내용과 그 과정을 설명하겠습니다.
