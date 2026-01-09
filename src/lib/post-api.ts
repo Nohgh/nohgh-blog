@@ -76,16 +76,9 @@ export function getPostBySlug(slug: string): Post {
   return post
 }
 
-let cachedPosts: Post[] | undefined
 export function getAllPosts(): Post[] {
-  if (cachedPosts) {
-    return cachedPosts
-  }
-
   const slugs = _getPostSlugs()
   const posts = slugs.map((slug) => getPostBySlug(slug)).sort(_comparePostByDateDesc)
-
-  cachedPosts = posts
 
   return posts
 }
