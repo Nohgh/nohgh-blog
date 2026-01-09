@@ -3,8 +3,8 @@ import Container from '@/app/_components/container'
 import { Intro } from '@/app/_components/intro'
 import { getAllPosts } from '@/lib/post-api'
 
-export default function Index() {
-  const posts = getAllPosts()
+export default async function Index() {
+  const posts = await getAllPosts()
 
   return (
     <main>
