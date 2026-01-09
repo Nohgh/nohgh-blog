@@ -1,4 +1,4 @@
-import { promises as fs } from 'fs'
+import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
 import type { Post } from '@/interfaces/post'
@@ -16,9 +16,8 @@ function _filterSlug(slug: string) {
   return !slug.startsWith(FILTER_SLUG_PREFIX)
 }
 
-async function _getPostSlugs() {
-  const allFiles = await fs.readdir(POSTS_DIR_PATH)
-  return allFiles.filter(_filterSlug)
+function _getPostSlugs() {
+  return fs.readdirSync(POSTS_DIR_PATH).filter(_filterSlug)
 }
 
 function _getSlugWithoutExtension(slug: string) {
@@ -29,8 +28,8 @@ function _getPostFilePath(slug: string) {
   return join(POSTS_DIR_PATH, `${slug}.md`)
 }
 
-async function _readPostFile(path: string) {
-  return fs.readFile(path, 'utf-8')
+function _readPostFile(path: string) {
+  return fs.readFileSync(path, 'utf-8')
 }
 
 function _parseMarkdown(fileContents: string) {
@@ -59,12 +58,12 @@ function _comparePostByDateDesc(a: Post, b: Post) {
 
 // ----- public functions ----- //
 
-export async function getPostBySlug(slug: string): Promise<Post> {
+export function getPostBySlug(slug: string): Post {
   const _slug = _getSlugWithoutExtension(slug)
 
   const postFilePath = _getPostFilePath(_slug)
 
-  const fileContents = await _readPostFile(postFilePath)
+  const fileContents = _readPostFile(postFilePath)
 
   const { data: frontMatter, content } = _parseMarkdown(fileContents)
 
@@ -77,16 +76,15 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   return post
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  const slugs = await _getPostSlugs()
-  const posts = await Promise.all(slugs.map((slug) => getPostBySlug(slug)))
-  posts.sort(_comparePostByDateDesc)
+export function getAllPosts(): Post[] {
+  const slugs = _getPostSlugs()
+  const posts = slugs.map((slug) => getPostBySlug(slug)).sort(_comparePostByDateDesc)
 
   return posts
 }
 
-export async function getRelativePosts(slug: string) {
-  const allPosts = await getAllPosts()
+export function getRelativePosts(slug: string) {
+  const allPosts = getAllPosts()
   const index = allPosts.findIndex((p) => p.slug === slug)
 
   if (index === -1) return { newer: null, older: null }

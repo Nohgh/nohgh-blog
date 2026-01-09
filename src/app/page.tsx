@@ -4,7 +4,7 @@ import { Intro } from '@/app/_components/intro'
 import { getAllPosts } from '@/lib/post-api'
 
 export default async function Index() {
-  const posts = await getAllPosts()
+  const posts = getAllPosts()
 
   return (
     <main>
