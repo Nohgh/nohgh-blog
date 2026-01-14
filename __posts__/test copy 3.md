@@ -1,5 +1,5 @@
 ---
-title: '막학기에 휴학을 한 이유'
+title: 'test copy 3'
 coverImage: 'https://velog.velcdn.com/images/kiki01111/post/d85ebcc9-bace-4f8a-94d0-c5c628511ec8/image.png'
 date: '2025-08-17'
 ogImage:
@@ -41,4 +41,4 @@ ogImage:
 
 시간이 지나 지금을 추억할때 25년 여름의 선택은 어떤 선택으로 기억될지는 알 수 없지만, 호기롭게 제가 할것에 집중하는 시간으로 만들어 후회없는 선택이 되도록 하겠습니다.
 
-![cafe-notebook](https://velog.velcdn.com/images/kiki01111/post/d85ebcc9-bace-4f8a-94d0-c5c628511ec8/image.png)
+![](https://velog.velcdn.com/images/kiki01111/post/d85ebcc9-bace-4f8a-94d0-c5c628511ec8/image.png)

@@ -44,3 +44,4 @@ images:
 - 400x300 크기의 사진입니다.
   ![gihoon](/assets/blog/dynamic-routing/1000x2600.png)
 - 1000x2600 크기의 사진입니다.
+  ![alt text](image.png)![alt text](image-1.png)
