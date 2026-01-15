@@ -2,6 +2,7 @@ import fs from 'fs'
 import { rename } from 'fs/promises'
 import path from 'path'
 import { checkbox, input, select, Separator, confirm } from '@inquirer/prompts'
+import matter from 'gray-matter'
 import {
   getInvalidPosts as getInvalidFiles,
   getInvalidPostBySlug,
@@ -85,9 +86,13 @@ async function uploadBlog() {
 
   const bodyWithNormalizedImages = await normalizeMDImages(slug, body, images, renamedFilePath)
 
-  replaceBody(renamedFilePath, body, bodyWithNormalizedImages)
+  const newFrontMatter = await setFrontMatter(bodyWithNormalizedImages)
 
-  const fromtMatter: FrontMatter = setFrontMatter(bodyWithNormalizedImages)
+  const stringifiedNewBody = matter.stringify(bodyWithNormalizedImages, newFrontMatter)
+
+  fs.writeFileSync(renamedFilePath, stringifiedNewBody, 'utf-8')
+
+  console.log('블로그 포스트가 성공적으로 생성되었습니다!')
 }
 
 async function selectFile(invalidPosts: string[]) {
@@ -259,12 +264,6 @@ async function normalizeMDImages(
   return nextBody
 }
 
-function replaceBody(path: string, from: Body, to: Body) {
-  if (from && to !== from) {
-    fs.writeFileSync(path, to, 'utf-8')
-  }
-}
-
 async function setFrontMatterImages(body: Body) {
   const images = extractImages(body)
 
@@ -298,15 +297,7 @@ async function setFromtMatterTitle() {
   return title
 }
 
-type FrontMatterShape = {
-  title: string
-  date: string
-  coverImage?: string
-  ogImage?: {
-    url: string
-  }
-}
-
+// TODO: local images에 대해 images 배열에 추가
 async function setFrontMatter(body: Body): Promise<FrontMatter> {
   const [coverImage, ogImage] = await setFrontMatterImages(body)
 
@@ -314,12 +305,12 @@ async function setFrontMatter(body: Body): Promise<FrontMatter> {
 
   const date = getYYYYMMDDDash()
 
-  const fromtMatter: FrontMatter = {
+  const frontMatter: FrontMatter = {
     title,
-    coverImage,
     date,
-    ogImage,
+    ...(coverImage && { coverImage }),
+    ...(ogImage && { ogImage: { url: ogImage } }),
   }
 
-  return fromtMatter
+  return frontMatter
 }
