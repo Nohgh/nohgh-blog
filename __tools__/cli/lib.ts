@@ -73,17 +73,21 @@ async function uploadBlog() {
 
   if (!slug) throw Error('slug가 들어오지 않았습니다.')
 
-  const renamedPostFile = await renamePostFile(slug)
+  const renamedFilePath = await renamePostFile(slug)
 
-  const fileContents = readPostFile(renamedPostFile)
+  const fileContents = readPostFile(renamedFilePath)
 
   const { data: frontMatter, content: body } = parseMarkdown(fileContents)
 
-  await clearFrontMatter(renamedPostFile, frontMatter, body)
+  await clearFrontMatter(renamedFilePath, frontMatter, body)
 
   const images = extractImages(body)
 
-  imagePipe(slug, body, images)
+  const bodyWithNormalizedImages = await normalizeMDImages(slug, body, images, renamedFilePath)
+
+  replaceBody(renamedFilePath, body, bodyWithNormalizedImages)
+
+  const fromtMatter: FrontMatter = setFrontMatter(bodyWithNormalizedImages)
 }
 
 async function selectFile(invalidPosts: string[]) {
@@ -103,11 +107,11 @@ async function getInput(message: string) {
 }
 
 function getMDFileFullPath(slug: string) {
-  return POSTS_DIR_PATH + '/' + slug + '.md'
+  return path.join(POSTS_DIR_PATH, `${slug}.md`)
 }
 
 // YYMMDD 형식의 날짜
-function getFormattedDate() {
+function getYYMMDD() {
   const today = new Date()
 
   const yy = String(today.getFullYear()).slice(-2)
@@ -118,13 +122,24 @@ function getFormattedDate() {
   return formatted
 }
 
-// TODO: join사용하는 방식으로 변경
+// YYYY-MM-DD 형식의 날짜
+function getYYYYMMDDDash() {
+  const today = new Date()
+
+  const yyyy = String(today.getFullYear())
+  const mm = String(today.getMonth() + 1).padStart(2, '0')
+  const dd = String(today.getDate()).padStart(2, '0')
+
+  const formatted = `${yyyy}-${mm}-${dd}`
+  return formatted
+}
+
 async function renamePostFile(oldSlug: string) {
   const newSlugMessage =
     '새로운 파일이름을 입력해주세요. \n오늘의 날짜(YYMMDD)뒤에 붙어 변경됩니다: '
   const newSlug = await getInput(newSlugMessage)
 
-  const date = getFormattedDate()
+  const date = getYYMMDD()
   const MDSaperator = '-'
   const newFileName = date + MDSaperator + newSlug
 
@@ -132,6 +147,7 @@ async function renamePostFile(oldSlug: string) {
 
   await rename(old, newer)
 
+  // return renamed file path
   return newer
 }
 
@@ -148,6 +164,7 @@ type MarkdownImage = {
   alt: string // alt text
   src: string // image-1.png
 }
+
 // 중복을 제거한 이미지를 반환
 function extractImages(body: string): MarkdownImage[] {
   const images = new Map<string, MarkdownImage>()
@@ -170,7 +187,7 @@ function extractImages(body: string): MarkdownImage[] {
   return Array.from(images.values())
 }
 
-function toSafeFileName(value: string) {
+function getSafeFileName(value: string) {
   return value
     .trim()
     .toLowerCase()
@@ -178,7 +195,19 @@ function toSafeFileName(value: string) {
     .replace(/[^a-z0-9-_]/g, '')
 }
 
-async function imagePipe(slug: string, body: string, images: MarkdownImage[]) {
+function isLocalImage(src: string) {
+  return !src.startsWith('http://') && !src.startsWith('https://')
+}
+
+type Body = string
+
+// image의 alt를 편집하고 이미지 파일의 이동을 지원
+async function normalizeMDImages(
+  slug: string,
+  body: string,
+  images: MarkdownImage[],
+  filePath: string,
+): Promise<Body> {
   if (images.length === 0) return body
 
   const indexesToEdit = await checkbox<number>({
@@ -190,6 +219,7 @@ async function imagePipe(slug: string, body: string, images: MarkdownImage[]) {
   })
 
   let nextBody = body
+
   const toEditImages = indexesToEdit.map((i) => images[i])
 
   for (const image of toEditImages) {
@@ -203,20 +233,93 @@ async function imagePipe(slug: string, body: string, images: MarkdownImage[]) {
     })
 
     const ext = path.extname(image.src)
-    const safeAlt = toSafeFileName(nextAlt)
-    const nextSrc = `/assets/blog/${slug}/${getFormattedDate()}-${safeAlt}${ext}`
+    const safeAlt = getSafeFileName(nextAlt)
+    const nextSrc = `/assets/blog/${slug}/${getYYMMDD()}-${safeAlt}${ext}`
 
-    if (move) {
-      const from = path.join(process.cwd(), 'public', image.src)
+    // replace image files
+    if (move && isLocalImage(image.src)) {
+      const mdDir = path.dirname(filePath)
+      const from = path.resolve(mdDir, image.src)
       const to = path.join(process.cwd(), 'public', nextSrc)
+
+      if (!fs.existsSync(from)) {
+        console.warn(`이미지 파일이 존재하지 않습니다: ${from}`)
+        continue
+      }
 
       fs.mkdirSync(path.dirname(to), { recursive: true })
       await rename(from, to)
     }
 
     const replacedRaw = `![${nextAlt}](${nextSrc})`
+
     nextBody = nextBody.replaceAll(image.raw, replacedRaw)
   }
 
   return nextBody
+}
+
+function replaceBody(path: string, from: Body, to: Body) {
+  if (from && to !== from) {
+    fs.writeFileSync(path, to, 'utf-8')
+  }
+}
+
+async function setFrontMatterImages(body: Body) {
+  const images = extractImages(body)
+
+  const imageChoices = images.map((img) => ({
+    name: `${img.src} (alt: ${img.alt || '없음'})`,
+    value: img.src,
+  }))
+
+  const coverImage = await select({
+    message: '대표 이미지를 선택하세요 (없어도 됨)',
+    choices: [{ name: '없음', value: '' }, ...imageChoices],
+  })
+
+  const useCoverasOG = await confirm({
+    message: `대표 이미지인 ${coverImage}를 OG 이미지로 사용할까요? N을 선택하면 새로 선택을 합니다.`,
+  })
+
+  let ogImage = coverImage
+
+  if (!useCoverasOG)
+    ogImage = await select({
+      message: 'OG이미지를 선택해주세요.',
+      choices: [...imageChoices],
+    })
+
+  return [coverImage, ogImage]
+}
+
+async function setFromtMatterTitle() {
+  const title = await getInput('블로그의 제목을 입력해주세요.')
+  return title
+}
+
+type FrontMatterShape = {
+  title: string
+  date: string
+  coverImage?: string
+  ogImage?: {
+    url: string
+  }
+}
+
+async function setFrontMatter(body: Body): Promise<FrontMatter> {
+  const [coverImage, ogImage] = await setFrontMatterImages(body)
+
+  const title = await setFromtMatterTitle()
+
+  const date = getYYYYMMDDDash()
+
+  const fromtMatter: FrontMatter = {
+    title,
+    coverImage,
+    date,
+    ogImage,
+  }
+
+  return fromtMatter
 }
