@@ -297,8 +297,15 @@ async function setFromtMatterTitle() {
   return title
 }
 
-// TODO: local images에 대해 images 배열에 추가
+function extractLocalImage(body: Body): string[] {
+  return extractImages(body)
+    .map((img) => img.src)
+    .filter(isLocalImage)
+}
+
 async function setFrontMatter(body: Body): Promise<FrontMatter> {
+  const fromtMatterImages = extractLocalImage(body)
+
   const [coverImage, ogImage] = await setFrontMatterImages(body)
 
   const title = await setFromtMatterTitle()
@@ -310,6 +317,7 @@ async function setFrontMatter(body: Body): Promise<FrontMatter> {
     date,
     ...(coverImage && { coverImage }),
     ...(ogImage && { ogImage: { url: ogImage } }),
+    images: [...fromtMatterImages],
   }
 
   return frontMatter
