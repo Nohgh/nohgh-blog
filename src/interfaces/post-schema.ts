@@ -21,13 +21,18 @@ const PostDateSchema = z.union([PostBasicDateSchema, PostDetailDateSchema])
 const PostTagSchema = z.union([z.string(), z.array(z.string())])
 
 const PostSchema = z.object({
-  slug: z.string(),
-  date: PostDateSchema,
+  // frontmatter
   title: z.string(),
-  content: z.string(),
   coverImage: z.string().optional(),
-  images: z.array(z.string()).optional(),
+  date: PostDateSchema,
+  slug: z.string(),
   ogImage: z.object({ url: z.string() }).optional(),
+  images: z.array(z.string()).optional(),
+
+  // content
+  content: z.string(),
+
+  // etc
   tags: PostTagSchema.optional(),
 })
 

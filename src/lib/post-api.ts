@@ -5,19 +5,18 @@ import type { Post } from '@/interfaces/post'
 import { PostSchema } from '@/interfaces/post-schema'
 
 // ----- constants ----- //
-
-const FILTER_SLUG_PREFIX = 'private'
+const DATE_SLUG_REGEX = /^\d{6}-/
 const POST_DIR_NAME = '__posts__'
-const POSTS_DIR_PATH = join(process.cwd(), POST_DIR_NAME)
+export const POSTS_DIR_PATH = join(process.cwd(), POST_DIR_NAME)
 
 // ----- private functions ----- //
 
-function _filterSlug(slug: string) {
-  return !slug.startsWith(FILTER_SLUG_PREFIX)
+function _filterValidSlug(slug: string) {
+  return DATE_SLUG_REGEX.test(slug)
 }
 
 function _getPostSlugs() {
-  return fs.readdirSync(POSTS_DIR_PATH).filter(_filterSlug)
+  return fs.readdirSync(POSTS_DIR_PATH).filter(_filterValidSlug)
 }
 
 function _getSlugWithoutExtension(slug: string) {
@@ -28,11 +27,11 @@ function _getPostFilePath(slug: string) {
   return join(POSTS_DIR_PATH, `${slug}.md`)
 }
 
-function _readPostFile(path: string) {
+export function readPostFile(path: string) {
   return fs.readFileSync(path, 'utf-8')
 }
 
-function _parseMarkdown(fileContents: string) {
+export function parseMarkdown(fileContents: string) {
   return matter(fileContents)
 }
 
@@ -61,11 +60,11 @@ function _comparePostByDateDesc(a: Post, b: Post) {
 export function getPostBySlug(slug: string): Post {
   const _slug = _getSlugWithoutExtension(slug)
 
-  const postFilePath = _getPostFilePath(_slug)
+  const postFilePath = _getPostFilePath(_slug) ///Users/gihoon/dev/FrontEnd/my-blog/__posts__/250224-build-own-webrtc.md
 
-  const fileContents = _readPostFile(postFilePath)
+  const fileContents = readPostFile(postFilePath)
 
-  const { data: frontMatter, content } = _parseMarkdown(fileContents)
+  const { data: frontMatter, content } = parseMarkdown(fileContents)
 
   const post = _validatePost({
     ...frontMatter,
@@ -114,4 +113,48 @@ export function getPostsByYear(posts: Post[]): PostsByYear {
 
 export function getPostImages(post: Post) {
   return [...(post.coverImage ? [post.coverImage] : []), ...(post.images ?? [])]
+}
+
+// YYMMDD- 또는 private- 로 시작하지 않는 파일
+const EXCLUDE_INVALID_SLUG_PATTERN = /^(?:\d{6}-|private-)/
+
+function filterInvalidPosts(slug: string) {
+  return !EXCLUDE_INVALID_SLUG_PATTERN.test(slug)
+}
+
+function isMarkdownFile(name: string) {
+  return name.endsWith('.md')
+}
+
+const IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.avif', '.svg']
+function isImageFile(name: string) {
+  return IMAGE_EXTENSIONS.some((ext) => name.toLowerCase().endsWith(ext))
+}
+
+export async function getInvalidPosts(): Promise<string[]> {
+  return fs.readdirSync(POSTS_DIR_PATH).filter(isMarkdownFile).filter(filterInvalidPosts)
+}
+
+export async function getImageFiles(): Promise<string[]> {
+  return fs.readdirSync(POSTS_DIR_PATH).filter(isImageFile)
+}
+
+export type IncompletedPost = Partial<Post>
+
+export async function getInvalidPostBySlug(slug: string): Promise<IncompletedPost> {
+  const _slug = _getSlugWithoutExtension(slug)
+
+  const postFilePath = _getPostFilePath(_slug)
+
+  const fileContents = readPostFile(postFilePath)
+
+  const { data: frontMatter, content } = parseMarkdown(fileContents)
+
+  const post = {
+    ...frontMatter,
+    slug: _slug,
+    content,
+  }
+
+  return post
 }
