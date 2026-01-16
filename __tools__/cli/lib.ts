@@ -1,5 +1,4 @@
-import fs from 'fs'
-import { rename } from 'fs/promises'
+import { rename, writeFile, mkdir, stat } from 'fs/promises'
 import path from 'path'
 import { checkbox, input, select, Separator, confirm } from '@inquirer/prompts'
 import matter from 'gray-matter'
@@ -45,10 +44,10 @@ export async function askAction() {
   return actionType
 }
 
-export function handleAction(action: ActionType) {
+export async function handleAction(action: ActionType) {
   switch (action) {
     case ActionTypeMap.upload:
-      uploadBlog()
+      await uploadBlog()
       break
     case ActionTypeMap.update:
       console.log('수정하기')
@@ -90,7 +89,7 @@ async function uploadBlog() {
 
   const stringifiedNewBody = matter.stringify(bodyWithNormalizedImages, newFrontMatter)
 
-  fs.writeFileSync(renamedFilePath, stringifiedNewBody, 'utf-8')
+  await writeFile(renamedFilePath, stringifiedNewBody, 'utf-8')
 
   console.log('블로그 포스트가 성공적으로 생성되었습니다!')
 }
@@ -160,7 +159,7 @@ async function renamePostFile(oldSlug: string) {
 async function clearFrontMatter(path: string, frontMatter: FrontMatter, body: string) {
   if (Object.keys(frontMatter).length === 0) return
 
-  fs.writeFileSync(path, body.trimStart(), 'utf-8')
+  await writeFile(path, body.trimStart(), 'utf-8')
 }
 
 // ![alt text](image-1.png)
@@ -247,12 +246,14 @@ async function normalizeMDImages(
       const from = path.resolve(mdDir, image.src)
       const to = path.join(process.cwd(), 'public', nextSrc)
 
-      if (!fs.existsSync(from)) {
+      try {
+        await stat(from)
+      } catch (e) {
         console.warn(`이미지 파일이 존재하지 않습니다: ${from}`)
         continue
       }
 
-      fs.mkdirSync(path.dirname(to), { recursive: true })
+      await mkdir(path.dirname(to), { recursive: true })
       await rename(from, to)
     }
 
