@@ -1,7 +1,7 @@
-import { Posts } from './posts/(components)/posts'
+import { Posts } from '@/(domain)/posts/components/posts'
+import { getAllPosts } from '@/(domain)/posts/utils'
 import Container from '@/layout/container'
 import { Intro } from '@/layout/intro'
-import { getAllPosts } from '@/posts/utils'
 
 export default async function Index() {
   const posts = getAllPosts()
