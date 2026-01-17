@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   openGraph: {
     images: [HOME_OG_IMAGE_URL],
   },
+  alternates: {
+    types: {
+      'application/rss+xml': `${SITE_URL}/feed.xml`,
+    },
+  },
 }
 
 export default function RootLayout({
