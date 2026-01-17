@@ -7,6 +7,9 @@ import { Gowun } from './fonts'
 import { HOME_OG_IMAGE_URL, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
+  verification: {
+    google: process.env.NEXT_GSC,
+  },
   title: `Nohgh Blog`,
   description: `안녕하세요. 노기훈의 블로그입니다.`,
   metadataBase: new URL(SITE_URL),
