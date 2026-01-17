@@ -7,7 +7,7 @@ import {
   getInvalidPostBySlug,
   parseMarkdown,
   POSTS_DIR_PATH,
-  readPostFile,
+  getFileContents,
 } from '@/lib/post-api'
 
 // constants
@@ -16,7 +16,21 @@ const ActionTypeMap = {
   update: 'update',
   delete: 'delete',
 } as const
+
+// types
 type ActionType = keyof typeof ActionTypeMap
+
+export type FrontMatter = {
+  [key: string]: any
+}
+
+type MarkdownImage = {
+  raw: string // ![alt text](image-1.png)
+  alt: string // alt text
+  src: string // image-1.png
+}
+
+type Body = string
 
 export async function askAction() {
   const actionType: ActionType = await select({
@@ -58,10 +72,6 @@ export async function handleAction(action: ActionType) {
   }
 }
 
-export type FrontMatter = {
-  [key: string]: any
-}
-
 async function uploadBlog() {
   const invalidFiles = await getInvalidFiles()
 
@@ -75,7 +85,7 @@ async function uploadBlog() {
 
   const renamedFilePath = await renamePostFile(slug)
 
-  const fileContents = readPostFile(renamedFilePath)
+  const fileContents = getFileContents(renamedFilePath)
 
   const { data: frontMatter, content: body } = parseMarkdown(fileContents)
 
@@ -162,13 +172,6 @@ async function clearFrontMatter(path: string, frontMatter: FrontMatter, body: st
   await writeFile(path, body.trimStart(), 'utf-8')
 }
 
-// ![alt text](image-1.png)
-type MarkdownImage = {
-  raw: string // ![alt text](image-1.png)
-  alt: string // alt text
-  src: string // image-1.png
-}
-
 // 중복을 제거한 이미지를 반환
 function extractImages(body: string): MarkdownImage[] {
   const images = new Map<string, MarkdownImage>()
@@ -202,8 +205,6 @@ function getSafeFileName(value: string) {
 function isLocalImage(src: string) {
   return !src.startsWith('http://') && !src.startsWith('https://')
 }
-
-type Body = string
 
 // image의 alt를 편집하고 이미지 파일의 이동을 지원
 async function normalizeMDImages(
