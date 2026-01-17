@@ -1,5 +1,5 @@
-import type { Post } from '@/posts/(schema)'
-import { PostPreview } from '../posts/(components)/post-preview'
+import type { Post } from '@/(domain)/posts/schema'
+import { PostPreview } from '@/(domain)/posts/components/post-preview'
 
 type Props = {
   posts: Post[]
