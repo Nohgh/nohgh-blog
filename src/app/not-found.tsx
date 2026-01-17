@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Container from './_components/container'
+import Container from './layout/container'
 
 export default function NotFound() {
   return (

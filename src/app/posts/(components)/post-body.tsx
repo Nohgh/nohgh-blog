@@ -1,4 +1,4 @@
-import markdownStyles from './markdown-styles.module.css'
+import postBodyStyle from './post-body.module.css'
 
 type Props = {
   content: string
@@ -7,7 +7,7 @@ type Props = {
 export function PostBody({ content }: Props) {
   return (
     <div className=" font-gowun max-w-full mx-auto relative ">
-      <div className={markdownStyles['markdown']} dangerouslySetInnerHTML={{ __html: content }} />
+      <div className={postBodyStyle['markdown']} dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   )
 }

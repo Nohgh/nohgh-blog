@@ -8,7 +8,7 @@ import {
   parseMarkdown,
   POSTS_DIR_PATH,
   getFileContents,
-} from '@/lib/post-api'
+} from '@/app/posts/utils'
 
 // constants
 const ActionTypeMap = {

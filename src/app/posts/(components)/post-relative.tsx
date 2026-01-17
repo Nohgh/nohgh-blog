@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import type { Post } from '@/interfaces/post'
-import { cacheImages } from '@/lib/cache-images'
+import type { Post } from '@/app/posts/(schema)/post'
+import { cacheImages } from '@/app/lib/cache-images'
 
 type RelativeType = 'newer' | 'older'
 

@@ -1,10 +1,10 @@
 import './globals.css'
 import cn from 'classnames'
 import type { Metadata } from 'next'
-import Header from './_components/header'
 import { Analytics } from './analytics'
 import { Gowun } from './fonts'
-import { HOME_OG_IMAGE_URL, SITE_URL } from '@/lib/constants'
+import Header from './layout/header'
+import { HOME_OG_IMAGE_URL, SITE_URL } from '@/app/lib/constants'
 
 export const metadata: Metadata = {
   verification: {

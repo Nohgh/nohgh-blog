@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { isValidDate } from '@/lib/date'
+import { isValidDate } from '@/app/lib/date'
 
 const SchemaErrorMessages = {
   'base-date-invalid': '유효하지 않은 날짜입니다',
@@ -36,11 +36,4 @@ const PostSchema = z.object({
   tags: PostTagSchema.optional(),
 })
 
-export {
-  SchemaErrorMessages,
-  PostBasicDateSchema,
-  PostDetailDateSchema,
-  PostDateSchema,
-  PostTagSchema,
-  PostSchema,
-}
+export { PostBasicDateSchema, PostDetailDateSchema, PostDateSchema, PostTagSchema, PostSchema }

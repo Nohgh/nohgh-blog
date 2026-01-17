@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Container from '@/app/_components/container'
-import { PostBody } from '@/app/_components/post-body'
-import PostFooter from '@/app/_components/post-footer'
-import { PostHeader } from '@/app/_components/post-header'
-import PostIsland from '@/app/_components/post-island'
-import { HOME_OG_IMAGE_URL } from '@/lib/constants'
-import markdownToHtml from '@/lib/markdownToHtml'
-import { getAllPosts, getPostBySlug } from '@/lib/post-api'
+import Container from '@/app/layout/container'
+import { PostBody } from '@/app/posts/(components)/post-body'
+import PostFooter from '@/app/posts/(components)/post-footer'
+import { PostHeader } from '@/app/posts/(components)/post-header'
+import PostIsland from '@/app/posts/(components)/post-toc'
+import { HOME_OG_IMAGE_URL } from '@/app/lib/constants'
+import markdownToHtml from '@/app/lib/markdownToHtml'
+import { getAllPosts, getPostBySlug } from '@/app/posts/utils'
 
 export default async function Post(props: Params) {
   const params = await props.params
