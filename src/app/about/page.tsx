@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Container from '@/app/layout/container'
-import { PROFILE_IMAGE_URL } from '@/app/lib/constants'
+import Container from '@/layout/container'
+import { PROFILE_IMAGE_URL } from '@/lib/constants'
 
 export default function About() {
   return (

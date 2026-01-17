@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
-import DateFormatter from '../../layout/date-formatter'
-import { cacheImages } from '@/app/lib/cache-images'
+import DateFormatter from '@/layout/date-formatter'
+import { cacheImages } from '@/lib/cache-images'
 
 type Props = {
   title: string

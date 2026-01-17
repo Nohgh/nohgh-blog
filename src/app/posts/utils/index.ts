@@ -1,8 +1,8 @@
 import fs from 'fs'
 import { join } from 'path'
 import matter from 'gray-matter'
-import type { Post } from '@/app/posts/(schema)/post'
-import { PostSchema } from '@/app/posts/(schema)/post-schema'
+import type { Post } from '@/posts/(schema)'
+import { PostSchema } from '@/posts/(schema)/post-schema'
 
 const POST_DIR_NAME = '__posts__'
 export const POSTS_DIR_PATH = join(process.cwd(), POST_DIR_NAME)

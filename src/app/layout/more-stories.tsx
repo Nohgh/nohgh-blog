@@ -1,4 +1,4 @@
-import type { Post } from '@/app/posts/(schema)/post'
+import type { Post } from '@/posts/(schema)'
 import { PostPreview } from '../posts/(components)/post-preview'
 
 type Props = {

@@ -1,4 +1,4 @@
-import Container from '@/app/layout/container'
+import Container from './container'
 
 export function Footer() {
   return (

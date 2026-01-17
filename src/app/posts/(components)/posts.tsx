@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto'
-import type { Post } from '@/app/posts/(schema)/post'
+import type { Post } from '../(schema)'
 import { PostPreview } from './post-preview'
-import { getPostsByYear, getPostImages } from '@/app/posts/utils'
+import { getPostsByYear, getPostImages } from '@/posts/utils'
 
 type Props = {
   posts: Post[]

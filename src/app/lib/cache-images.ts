@@ -1,4 +1,4 @@
-import { getImageCacheInstance } from '@/app/lib/ImageCache'
+import { getImageCacheInstance } from './ImageCache'
 
 export function cacheImages(images: string[] | undefined) {
   if (!images || images.length === 0) return

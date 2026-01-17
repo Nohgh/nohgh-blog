@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { isValidDate } from '@/app/lib/date'
+import { isValidDate } from '@/lib/date'
 
 const SchemaErrorMessages = {
   'base-date-invalid': '유효하지 않은 날짜입니다',

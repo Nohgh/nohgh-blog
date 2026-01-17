@@ -1,5 +1,5 @@
 import styles from './post-toc-scroll.module.css'
-import { TocLink } from '@/app/lib/markdownToHtml'
+import { TocLink } from '@/lib/markdownToHtml'
 
 interface Props {
   toc: TocLink[]
