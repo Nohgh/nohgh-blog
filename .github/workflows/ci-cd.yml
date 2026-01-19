@@ -10,7 +10,6 @@ jobs:
   test:
     name: 테스트 실행
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -18,21 +17,20 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'pnpm'
 
-      - name: pnpm 활성화
-        run: corepack enable
+      - name: pnpm 설치
+        run: npm install -g pnpm
 
       - name: 의존성 설치
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
-      - name: 린트
+      - name: 린트 실행
         run: pnpm lint
 
       - name: 타입 체크
         run: pnpm type:check
 
-      # - name: 테스트
+      # - name: 테스트 실행
       #   run: pnpm test
 
   deploy:
@@ -40,9 +38,19 @@ jobs:
     needs: test
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
-      - name: Vercel 배포
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Node.js 설정
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Vercel CLI 설치
+        run: npm install -g vercel@latest
+
+      - name: Vercel 프로젝트 설정 가져오기
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: 빌드 및 배포
+        run: vercel --token=${{ secrets.VERCEL_TOKEN }} --prod
