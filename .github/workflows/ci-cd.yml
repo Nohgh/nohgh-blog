@@ -19,6 +19,9 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      - name: pnpm 설치
+        run: npm install -g pnpm
+
       - name: 의존성 설치
         run: pnpm install
 
