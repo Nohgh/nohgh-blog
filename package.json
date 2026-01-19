@@ -5,6 +5,8 @@
     "dev": "next dev --turbopack",
     "build": "pnpm generate:rss && next build",
     "start": "next start",
+    "_____test_____": "",
+    "test": "",
     "_____lint & format_____": "",
     "lint": "pnpm exec eslint .",
     "lint:fix": "pnpm exec eslint . --fix",
