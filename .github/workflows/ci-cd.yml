@@ -16,13 +16,10 @@ jobs:
       - name: Node.js 설정
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'pnpm'
+          node-version: 20
 
-      - name: pnpm 설치 (Corepack)
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+      - name: pnpm 설치
+        run: npm install -g pnpm
 
       - name: 의존성 설치
         run: pnpm install
@@ -47,13 +44,7 @@ jobs:
       - name: Node.js 설정
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: pnpm 설치 (Corepack)
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
+          node-version: 20
 
       - name: Vercel CLI 설치
         run: npm install -g vercel@latest
