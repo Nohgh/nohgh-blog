@@ -19,8 +19,10 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: pnpm 설치
-        run: npm install -g pnpm
+      - name: pnpm 설치 (Corepack)
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
       - name: 의존성 설치
         run: pnpm install
@@ -34,11 +36,6 @@ jobs:
       - name: 테스트 실행
         run: pnpm test
 
-      - name: 테스트 커버리지 업로드 (선택사항)
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
   deploy:
     name: Vercel 배포
     needs: test
@@ -46,6 +43,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Node.js 설정
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: pnpm 설치 (Corepack)
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
       - name: Vercel CLI 설치
         run: npm install -g vercel@latest
