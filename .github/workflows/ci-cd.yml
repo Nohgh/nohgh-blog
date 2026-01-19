@@ -28,7 +28,7 @@ jobs:
         run: pnpm lint
 
       - name: 타입 체크
-        run: pnpm type-check
+        run: pnpm type:check
 
       - name: 테스트 실행
         run: pnpm test
