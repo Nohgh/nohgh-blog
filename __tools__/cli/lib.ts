@@ -8,7 +8,7 @@ import {
   parseMarkdown,
   POSTS_DIR_PATH,
   getFileContents,
-} from '@/(domain)'
+} from '../../src/domain'
 
 // constants
 const ActionTypeMap = {

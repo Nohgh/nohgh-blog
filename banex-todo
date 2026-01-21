@@ -15,9 +15,8 @@
         - search console 등록
         - rss 제공
         - 리펙터링
-
+         - ci/cd
     # -- 미완료 --
-        - ci/cd
         - 테스트코드 작성 // 선택
         - readme 작성
         

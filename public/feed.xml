@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Nohgh Blog]]></title>
+        <description><![CDATA[안녕하세요. 노기훈의 블로그입니다.]]></description>
+        <link>https://gihoon.me</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 21 Jan 2026 09:01:31 GMT</lastBuildDate>
+        <atom:link href="https://gihoon.me/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 21 Jan 2026 09:01:31 GMT</pubDate>
+        <copyright><![CDATA[All rights reserved 2026, Nohgh]]></copyright>
+        <language><![CDATA[ko]]></language>
+        <item>
+            <title><![CDATA[막학기에 휴학을 한 이유]]></title>
+            <description><![CDATA[
+2025년은 저에게 큰 도전이 가득한 한 해입니다.
+크고 작은 도전들을 시간순으로 회고하는 겸 적어보겠습니다.
+
+1월, 구름톤 유니브에 학교 대표로 지원을 하였습니다.
+3월, 현직자를 대상으로한 부트캠프인 항해 플러스에서 프론트엔드를 공부했습니다.
+6월, 네이버페이 인턴십 채용과정에 참가하여 서류와 과제 전형을 통과하고 면접을 진행했습니다.
+7월, 네이버]]></description>
+            <link>https://gihoon.me/posts/250817-final-semester-leave</link>
+            <guid isPermaLink="false">250817-final-semester-leave</guid>
+            <dc:creator><![CDATA[Nohgh]]></dc:creator>
+            <pubDate>Sun, 17 Aug 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[10주간의 항해를 마치며 part 2.]]></title>
+            <description><![CDATA[
+> 지난주 토요일(25.06.07) 길다면 길고 짧다면 짧다고 할 수 있는 10주간의 항해가 끝났습니다.
+
+이번 포스트에서는 마지막 네트워킹 자리에서 최종 발표 때 사용했던 자료와 새롭게 추가한 내용을 토대로 항해 플러스 5기에 대한 회고를 진행해 보고자 합니다.
+_이번 회고 중 일부는 테오의 멘토링에서 제시해 주셨던 키워드를 바탕으로 만들게 되었습니다.]]></description>
+            <link>https://gihoon.me/posts/250619-final-hanghae-2</link>
+            <guid isPermaLink="false">250619-final-hanghae-2</guid>
+            <dc:creator><![CDATA[Nohgh]]></dc:creator>
+            <pubDate>Thu, 19 Jun 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[10주간의 항해를 마치며 part 1.]]></title>
+            <description><![CDATA[
+> 지난주 토요일(25.06.07) 길다면 길고 짧다면 짧다고 할 수 있는 10주간의 항해가 끝났습니다.
+
+이번 포스트에서는 마지막 네트워킹 자리에서 최종 발표 때 사용했던 자료와 새롭게 추가한 내용을 토대로 항해 플러스 5기에 대한 회고를 진행해 보고자 합니다.
+_이번 회고 중 일부는 테오의 멘토링에서 제시해 주셨던 키워드를 바탕으로 만들게 되었습니다.]]></description>
+            <link>https://gihoon.me/posts/250613-final-hanghae-1</link>
+            <guid isPermaLink="false">250613-final-hanghae-1</guid>
+            <dc:creator><![CDATA[Nohgh]]></dc:creator>
+            <pubDate>Fri, 13 Jun 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[에브리타임에서 스크랩 200개를 받다.]]></title>
+            <description><![CDATA[
+# 강의실을 찾아주는 웹사이트, uhdiro를 만들게 된 이유
+
+매년 새 학기에 개강을 하면 새로 입학한 새내기 분들을 포함해 많은 한림대학교 학우분들이 강의실을 찾기 위해 한림대학교에서 제공하는 캠퍼스맵을 찾아보곤합니다.
+
+캠퍼스맵은 각 건물들의 위치를 한 눈에 볼 수 있다는 장점이 있지만 강의실과 건물의 정보를 보고 찾아가기에는 어렵다는 점이 있습니다]]></description>
+            <link>https://gihoon.me/posts/250307-every-time-likecount-200</link>
+            <guid isPermaLink="false">250307-every-time-likecount-200</guid>
+            <dc:creator><![CDATA[Nohgh]]></dc:creator>
+            <pubDate>Fri, 07 Mar 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[직접 화상채팅 구현하기 (with WebRTC)]]></title>
+            <description><![CDATA[
+작년 캡스톤 디자인, 하계 오픈소스 해커톤에서 개발하였던 화상채팅을 개발하며 배운 내용과 그 과정을 설명하겠습니다.
+
+줌, 구글 미트와 같은 화상채팅 플랫폼처럼 다양한 기술을 종합하지는 않았지만 기본적인 화상채팅을 구현하는 과정에 대한 설명을 여러 포스트를 통해 살펴보겠습니다.
+
+---
+
+### 화상채팅은 무엇으로 개발할까요?
+
+화상채팅은 WebRTC라는]]></description>
+            <link>https://gihoon.me/posts/250224-build-own-webrtc</link>
+            <guid isPermaLink="false">250224-build-own-webrtc</guid>
+            <dc:creator><![CDATA[Nohgh]]></dc:creator>
+            <pubDate>Mon, 24 Feb 2025 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import type { Post } from '../schema'
-import { cacheImages } from '@/lib/cache-images'
+import { cacheImages } from '@app/lib/cache-images'
 
 type RelativeType = 'newer' | 'older'
 

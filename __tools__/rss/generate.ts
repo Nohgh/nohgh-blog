@@ -1,6 +1,6 @@
 import fs from 'fs'
 import RSS from 'rss'
-import { getAllPosts } from '@/(domain)'
+import { getAllPosts } from '../../src/domain'
 import { SITE_URL } from '@/lib/constants'
 
 const SITE_TITLE = 'Nohgh Blog'
