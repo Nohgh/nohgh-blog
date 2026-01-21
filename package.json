@@ -1,19 +1,20 @@
 {
   "private": true,
   "scripts": {
-    "_____dev & build & start_____": "",
+    "_____dev & build & start_____": "__________",
     "dev": "next dev --turbopack",
     "build": "pnpm generate:rss && next build",
     "start": "next start",
-    "_____test_____": "",
+    "_____test_____": "__________",
     "test": "",
-    "_____lint & format_____": "",
+    "coverage": "vitest run --coverage",
+    "_____lint & format_____": "__________",
     "lint": "pnpm exec eslint .",
     "lint:fix": "pnpm exec eslint . --fix",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "type:check": "tsc --noEmit",
-    "_____dev tools_____": "",
+    "_____dev tools_____": "__________",
     "qr": "node __tools__/qr.mjs",
     "blog": "tsx __tools__/cli.ts",
     "generate:rss": "tsx __tools__/rss/generate.ts"
@@ -46,10 +47,13 @@
   },
   "devDependencies": {
     "@inquirer/prompts": "^8.2.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20.14.8",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/rss": "^0.0.32",
+    "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.19",
     "commander": "^14.0.2",
     "eslint": "^9.39.2",
@@ -57,12 +61,15 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
+    "jsdom": "^27.4.0",
     "local-ip-url": "^1.0.10",
     "postcss": "^8.4.38",
     "prettier": "^3.7.4",
     "qrcode-terminal": "^0.12.0",
     "tailwindcss": "^3.4.4",
     "tsx": "^4.21.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.2",
+    "vite-tsconfig-paths": "^6.0.4",
+    "vitest": "^4.0.17"
   }
 }
