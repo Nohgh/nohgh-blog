@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
-import { getAllPosts } from '../domain'
 import { SITE_URL } from './lib/constants'
+import { getAllPosts } from '@domain/posts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()

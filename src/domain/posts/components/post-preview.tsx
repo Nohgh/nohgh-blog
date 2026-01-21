@@ -1,4 +1,5 @@
 'use client'
+
 import Link from 'next/link'
 import DateFormatter from '@app/layout/date-formatter'
 import { cacheImages } from '@app/lib/cache-images'

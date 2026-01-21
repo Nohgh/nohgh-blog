@@ -1,7 +1,7 @@
 import fs from 'fs'
 import RSS from 'rss'
-import { getAllPosts } from '../../src/domain'
-import { SITE_URL } from '@/lib/constants'
+import { SITE_URL } from '@app/lib/constants'
+import { getAllPosts } from '@domain/posts'
 
 const SITE_TITLE = 'Nohgh Blog'
 const SITE_DESCRIPTION = '안녕하세요. 노기훈의 블로그입니다.'
