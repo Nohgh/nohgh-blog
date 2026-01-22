@@ -2,6 +2,19 @@ import { describe, it, expect } from 'vitest'
 import markdownToHtml from './markdownToHtml'
 
 describe('markdownToHtml', () => {
+  it('h1~h6의 level이 정확히 들어간다', async () => {
+    const md = `# a\n## b\n### c\n#### d\n##### e\n###### f`
+    const { toc } = await markdownToHtml(md)
+
+    expect(toc.map((t) => t.level)).toEqual([1, 2, 3, 4, 5, 6])
+  })
+
+  it('텍스트가 비어있는 헤딩은 TOC에 포함하지 않는다', async () => {
+    const md = `# \n## \n###`
+    const { toc } = await markdownToHtml(md)
+    expect(toc).toEqual([])
+  })
+
   it('헤딩으로 TOC를 생성하고, heading id와 일치한다', async () => {
     const md = `
 # Hello World
