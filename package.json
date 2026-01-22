@@ -17,7 +17,7 @@
     "_____dev tools_____": "__________",
     "qr": "node __tools__/qr.mjs",
     "blog": "tsx __tools__/cli.ts",
-    "generate:rss": "tsx __tools__/rss/generate.ts"
+    "generate:rss": "tsx __tools__/rss.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.1.1",

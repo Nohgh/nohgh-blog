@@ -6,7 +6,7 @@ import { getAllPosts } from '@domain/posts'
 const SITE_TITLE = 'Nohgh Blog'
 const SITE_DESCRIPTION = '안녕하세요. 노기훈의 블로그입니다.'
 
-async function generateRssFeed() {
+export async function generateRssFeed() {
   const posts = getAllPosts()
 
   const feedOptions = {
@@ -35,5 +35,3 @@ async function generateRssFeed() {
   fs.writeFileSync('./public/feed.xml', feed.xml({ indent: true }))
   console.log('RSS feed generated successfully at public/feed.xml')
 }
-
-generateRssFeed()
