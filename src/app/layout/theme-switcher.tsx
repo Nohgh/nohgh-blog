@@ -2,7 +2,7 @@
 'use client'
 
 import { memo, useEffect, useState } from 'react'
-import styles from './switch.module.css'
+import styles from './theme-switcher.module.css'
 
 declare global {
   var updateDOM: () => void
@@ -101,6 +101,7 @@ const Script = memo(() => (
   />
 ))
 
+// !test
 /**
  * This component applies classes and transitions.
  */

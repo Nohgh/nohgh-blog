@@ -1,10 +1,11 @@
-import styles from './post-toc-scroll.module.css'
+import styles from './post-toc.module.css'
 import { TocLink } from '@app/lib/markdownToHtml'
 
 interface Props {
   toc: TocLink[]
 }
 
+// !test: toc 정상적으로 나오는지 확인
 export default function PostTOC({ toc }: Props) {
   return (
     <nav

@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import type { Post } from '../schema'
 import { PostSchema } from '../schema/post-schema'
 
+// !test: post가 있는 경로를 정상적으로 얻는지 확인
 const POST_DIR_NAME = '__posts__'
 export const POSTS_DIR_PATH = join(process.cwd(), POST_DIR_NAME)
 
@@ -44,14 +45,17 @@ function comparePostByDateDesc(a: Post, b: Post) {
   return getPostTimestamp(b) - getPostTimestamp(a)
 }
 
+// !test: 파일의 content부분을 가져오는지 확인
 export function getFileContents(path: string) {
   return fs.readFileSync(path, 'utf-8')
 }
 
+// !test:  data: frontMatter, content: body 부분을 가져오는지 확인
 export function parseMarkdown(fileContents: string) {
   return matter(fileContents)
 }
 
+// !test: slug를 기반으로 post를 가져오는지 확인
 export function getPostBySlug(slug: string): Post {
   const _slug = getSlugWithoutExtension(slug)
 
@@ -70,6 +74,7 @@ export function getPostBySlug(slug: string): Post {
   return post
 }
 
+// !test: 모든 posts를 가져오는지 확인
 export function getAllPosts(): Post[] {
   const slugs = getPostSlugs()
   const posts = slugs.map((slug) => getPostBySlug(slug)).sort(comparePostByDateDesc)
@@ -77,6 +82,7 @@ export function getAllPosts(): Post[] {
   return posts
 }
 
+// !test: 날짜에대해 앞뒤의 post를 가져오는지 확인
 export function getRelativePosts(slug: string) {
   const allPosts = getAllPosts()
   const index = allPosts.findIndex((p) => p.slug === slug)
@@ -90,6 +96,7 @@ export function getRelativePosts(slug: string) {
 }
 
 type PostsByYear = [string, Post[]][]
+// !test: 연도순으로 post를 가져오는지 확인
 export function getPostsByYear(posts: Post[]): PostsByYear {
   const yearMap = new Map<string, Post[]>()
 
@@ -106,6 +113,7 @@ export function getPostsByYear(posts: Post[]): PostsByYear {
   return Array.from(yearMap.entries())
 }
 
+// !test: post의 이미지들을 리턴하는지 확인
 export function getPostImages(post: Post) {
   return [...(post.coverImage ? [post.coverImage] : []), ...(post.images ?? [])]
 }
@@ -126,15 +134,13 @@ function isImageFile(name: string) {
   return IMAGE_EXTENSIONS.some((ext) => name.toLowerCase().endsWith(ext))
 }
 
+// !test: 유효하지 않은 posts를 가져오는지 확인
 export async function getInvalidPosts(): Promise<string[]> {
   return fs.readdirSync(POSTS_DIR_PATH).filter(isMarkdownFile).filter(filterInvalidPosts)
 }
 
-export async function getImageFiles(): Promise<string[]> {
-  return fs.readdirSync(POSTS_DIR_PATH).filter(isImageFile)
-}
-
 export type IncompletedPost = Partial<Post>
+// !test: slug로 유효하지 않는 post를 가져오는지 확인
 export async function getInvalidPostBySlug(slug: string): Promise<IncompletedPost> {
   const _slug = getSlugWithoutExtension(slug)
 
