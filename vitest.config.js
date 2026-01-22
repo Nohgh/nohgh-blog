@@ -9,5 +9,9 @@ export default defineConfig({
     globals: true,
     setupFiles: ['vitest.setup.ts'],
     exclude: ['./node_modules/**', './.next/**', './e2e/**'],
+    coverage: {
+      provider: 'v8',
+      include: ['src/**/*.{ts,tsx}', '__tools__/**/*.{ts,tsx}'],
+    },
   },
 })
