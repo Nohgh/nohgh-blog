@@ -1,6 +1,7 @@
 import { toString } from 'hast-util-to-string'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSanitize from 'rehype-sanitize'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify'
 import remarkBreaks from 'remark-breaks'
@@ -60,6 +61,7 @@ const baseProcessor = unified()
   .use(remarkGfm)
   .use(remarkBreaks)
   .use(remarkRehype)
+  .use(rehypeSanitize)
   .use(rehypeSlug)
   .use(rehypePrettyCode, {
     theme: 'github-dark',
