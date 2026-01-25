@@ -16,11 +16,11 @@ export default function PostFooter({ slug }: { slug: string }) {
   return (
     <footer className="mt-2 border-t-[2px] border-neutral-200 dark:border-neutral-800">
       <nav className="mt-6 flex justify-between gap-4">
-        <div>
-          {newer && <PostRelative post={newer} images={images.get('newer')} type={'newer'} />}
+        <div className="text-left">
+          {older && <PostRelative post={older} images={images.get('older')} type={'older'} />}
         </div>
         <div className="text-right">
-          {older && <PostRelative post={older} images={images.get('older')} type={'older'} />}
+          {newer && <PostRelative post={newer} images={images.get('newer')} type={'newer'} />}
         </div>
       </nav>
     </footer>

@@ -23,7 +23,7 @@ export function PostRelative({ post, images, type }: Props) {
         prefetch={true}
         className="hover:underline hover:underline-offset-4 hover:font-bold transition-all "
       >
-        {type === 'newer' ? `← ${post.title}` : `${post.title} →`}
+        {type === 'older' ? `← ${post.title}` : `${post.title} →`}
       </Link>
     </div>
   )
