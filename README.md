@@ -46,3 +46,18 @@ pnpm generate:rss
 ```
 
 ---
+
+> [!TIP]
+> 테스트 파일, 스타일시트, 타입 정의 등 관련 파일들을 자동으로 그룹화하여 탐색 효율을 높이기 위해 VS Code File Nesting을 사용하고 있습니다. 링크를 참조해주세요.
+
+https://code.visualstudio.com/updates/v1_64#_explorer-file-nesting
+
+```json
+"explorer.fileNesting.patterns": {
+   "*.ts": "${capture}.test.ts, ${capture}.spec.ts, ${capture}.d.ts",
+   "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts, ${capture}.test.js, ${capture}.spec.js",
+   "*.tsx": "${capture}.test.tsx, ${capture}.spec.tsx, ${capture}.stories.tsx, ${capture}.css, ${capture}.module.css, ${capture}.scss, ${capture}.module.scss",
+}
+```
+
+<img src="https://velog.velcdn.com/images/kiki01111/post/9b948185-3eac-4346-9c1f-41bfd7b43d70/image.png" alt="alt text" width="400" />
