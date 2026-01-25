@@ -61,10 +61,7 @@ export default function About() {
                   아직 가장 잘하고 많이 한 것이 프론트엔드이지만 앞으로 긴 소프트웨어 엔지니어로서
                   나의 영역을 넓히고자 합니다.
                 </p>
-                <p>
-                  요즘의 관심사로는 FP(functional programming), golang을 통한 CLI툴 개발, 웹 에디터
-                  제작입니다.
-                </p>
+                <p>요즘의 관심사로는 FP(functional programming), golang, 웹 에디터 제작입니다.</p>
               </div>{' '}
               <div className="text-xs text-neutral-500 dark:text-neutral-500 mt-2">
                 {`Written at '2026.01'`}
