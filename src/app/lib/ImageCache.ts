@@ -12,6 +12,10 @@ export class ImageCache {
     return ImageCache.instance
   }
 
+  static createTestInstance(): ImageCache {
+    return new ImageCache()
+  }
+
   private isValidCache(image: string) {
     if (this.cached.has(image) || this.failed.has(image)) {
       return false
@@ -46,6 +50,10 @@ export class ImageCache {
 
   clear() {
     this.cached.clear()
+  }
+
+  getCachedSize() {
+    return this.cached.size
   }
 }
 
