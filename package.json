@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@next/third-parties": "^16.1.1",
+    "@vercel/analytics": "^1.6.1",
     "classnames": "^2.5.1",
     "date-fns": "^3.6.0",
     "feed": "^5.2.0",
