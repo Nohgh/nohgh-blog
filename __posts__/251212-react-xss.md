@@ -1,5 +1,5 @@
 ---
-title: 리액트에서 xss 공격을 처리하는 다양한 방법 (with TestCode)
+title: 리액트에서 xss 공격을 처리하는 다양한 방법
 date: '2025-12-12'
 coverImage: ''
 ogImage:
